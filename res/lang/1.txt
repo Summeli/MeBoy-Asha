@@ -1,0 +1,72 @@
+Nuevo Juego
+Resumir Juego
+Configuración
+Registro
+Bluetooth
+Acerca de MeBoy
+Salir
+Elegir ROM
+Borrar
+Duplicar
+Atras
+No se puede resumir porque el juego no esta instalado
+Salto de frames
+Numero de giros de 90°
+Gráficos
+Ajustar a la pantalla
+Mantener proporciones
+Graficos avanzados
+Modo avanzado de escalado
+Sonido
+Activar sonido
+Opciones experimentales
+Idioma
+Otros
+Desactivar GBC
+Mostrar "Registro" en el menu
+Maximo tamaño a cargar en kb
+Guardar
+Registro
+Memoria libre:
+Pausar
+Resumir
+Suspender
+Mostrar/ocultar fps
+Maximizar
+Definir botones
+Salir de
+presione el boton para
+derecha
+izquierda
+arriba
+abajo
+a
+b
+Select
+Start
+Error de MeBoy
+Ha ocurrido un error
+Partida incompatible
+Fallo la carga del juego
+Fallo el resumen del juego
+No se pudo cargar la lista de juegos.
+Enviar RAM del juego
+RAM del juego
+Enviar partida suspendida
+Partidas suspendidas
+Recibir partidas
+Cancelar
+Envio Bluetooth completado.
+Falló el envio Bluetooth.
+No se encontraron dispositivos.
+Transmitiendo
+No se pudo conectar a MeBoy en el dispositivo.
+La partida no se pudo obtener porque que no coincide con ningun juego.
+La partida recibida no pudo ser guardada.
+Ninguno de los juegos tiene una partida RAM.
+Buscando dispositivos próximos. Asegurese que el otro dispositivo esté en modo "Recibir partidas".
+Intentando conectar MeBoy en el dispositivo seleccionado...
+Esperando la transmision de partidas...
+Versión incompatible.
+Elegir dispositivo
+Recibiendo...

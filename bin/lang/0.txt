@@ -1,0 +1,73 @@
+Start Game
+Resume Game
+Settings
+Show Log
+Bluetooth
+About MeBoy
+Exit
+Select Game
+Delete
+Duplicate
+Back
+Could not resume since the game is not installed
+Frameskip
+Screen rotation (x90°)
+Graphics
+Scale to fit
+Keep proportions
+Advanced graphics
+Advanced scaling mode
+Sound
+Enable sound
+Experimental features
+Language
+Other
+Disable GBC emulation
+Show "Log" in menu
+Max loaded cart size kB
+Save
+Log
+Free memory:
+Pause
+Resume
+Suspend
+Show/hide framerate
+Full screen
+Set buttons
+Exit
+Press the button for
+right
+left
+up
+down
+A
+B
+Select
+Start
+MeBoy Error
+An error has occurred
+Incompatible saved game.
+Loading the game failed
+Failed to update a suspended game
+Could not load the list of carts.
+Send cart-RAM
+Cart-RAM
+Send suspended game
+Suspended games
+Receive savegame
+Cancel
+Bluetooth transmission completed successfully.
+Bluetooth transmission failed.
+No Bluetooth devices found.
+Transmitting...
+Could not connect to MeBoy on the device.
+The savegame could not be received because it does not match any installed game.
+The received savegame could not be saved.
+None of the installed games have cart-RAM.
+Searching for devices in the vicinity. Make sure the device you want to send to is in "receive savegame" mode.
+Trying to connect to MeBoy on the selected device...
+Waiting for a savegame to be transmitted...
+Incompatible version.
+Select device
+Receiving...
+

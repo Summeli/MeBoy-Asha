@@ -1,0 +1,72 @@
+Pokreni igru
+Učitaj igru
+Postavke
+Pokaži izvješće
+Bluetooth
+O programu
+Izlaz
+Odaberite igru
+Izbriši
+Kopiraj
+Natrag
+Ne mogu učitati jer igra nije instalirana
+Preskakanje frameova
+Zakretanje zaslona (x90°)
+Grafika
+Prilagodi zaslonu
+Zadrži omjer slike
+Napredna grafika
+Napredni način skaliranja
+Zvuk
+Omogući zvuk
+Eksperimentalne funkcije
+Jezik
+Ostalo
+Onemogući GameBoy boje
+Pokaži "Izvješće" u izborniku
+Maks.vel.učitane igre kB
+Spremi
+Izvješće
+Slobodna memorija
+Pauza
+Nastavi
+Spremi
+Pokaži/ukloni fps
+Preko cijelog zaslona
+Postavi kontrole
+Izađi iz
+Pritisnite tipku za
+desno
+lijevo
+gore
+dolje
+A
+B
+Select
+Start
+MeBoy greška
+Pojavila se greška
+Nekompatibilna save datoteka.
+Učitavanje igre nije uspjelo
+Obnova spremljene igre nije uspjela
+Ne mogu učitati popis igara.
+Pošalji cart-RAM
+Cart-RAM
+Pošalji spremljenu igru
+Spremljene igre
+Primi save datoteku
+Odustani
+Bluetooth prijenos uspješno obavljen.
+Bluetooth prijenos nije uspio.
+Nije pronađen nijedan Bluetooth uređaj.
+Slanje...
+Ne mogu se spojiti na MeBoy na uređaju.
+Save datoteka nije primljena jer ne odgovara nijednoj instaliranoj igri.
+Ne mogu spremiti primljenu save datoteku.
+Nijedna od instaliranih igara nema cart-RAM.
+Tražim uređaje... Provjerite je li na uređaju na koji šaljete odabrano "Primi save datoteku"
+Spajanje na MeBoy na odabranom uređaju...
+Slanje save datoteke...
+Nekompatibilna verzija.
+Odaberite uređaj
+Primanje...

@@ -1,0 +1,73 @@
+Spiel starten
+Spiel fortsetzen
+Optionen
+Log anzeigen
+Bluetooth
+Über MeBoy
+Beenden
+Spiel wählen
+Löschen
+Duplizieren
+Zurück
+Spielstand kann nicht fortgesetzt werden, weil dass zugehörige Spiel nicht installiert ist
+Frames überspringen
+Bildschirm rotieren (x90°)
+Grafikeinstellungen
+Auf passende Größe skalieren
+Proportionen beibehalten
+Erweiterter Zeichenmodus (langsamer)
+Erweiterter Skalierungsmodus
+Sound
+Sound aktivieren
+Experimentelle Features
+Sprache
+Anderes
+GBC Emulation deaktivieren
+"Log" im Menü anzeigen
+Maximal geladene Cartgröße (kB)
+Speichern
+Log
+Freier Speicher:
+Pause
+Fortsetzen
+Auswerfen
+Framerate ein/ausblenden
+Vollbild
+Tasten bearbeiten
+Beenden von
+Drücke die Taste für
+Rechts
+Links
+Hoch
+Runter
+A
+B
+Select
+Start
+MeBoy Fehler
+Ein Fehler ist aufgetreten
+Imkompatibler Speicherstand.
+Laden des Spielstandes fehlgeschlagen
+Spielstand konnte nicht gespeichert werden
+Liste der Carts konnte nicht geladen werden
+Sende cart-RAM
+Cart-RAM
+Sende gespeichertes Spiel
+Spielstände
+Empfange Spielstand
+Abbrechen
+Bluetoothübertragung erfolgreich abgeschlossen.
+Bluetoothübertragung fehlgeschlagen
+Keine Bluetoothdevices gefunden
+Übertrage...
+Verbindungsfehler mit MeBoy auf Zielgerät.
+Der Spielstand konnte nicht empfangen werden, weil er zu keinem installiertem Spiel passt.
+Der empfangene Spielstand konnte nicht gespeichert werden.
+Keines der installierten Spiele besitzt cart-RAM.
+Suche nach Geräten in der Umgebung... Stellen sie sicher, dass sich das Zielgerät im "Spielstand empfangen"-Modus befindet.
+Versuche zu MeBoy auf dem Zielgerät zu verbinden...
+Warten auf Übertragung des Spielstandes...
+Inkompatible Version.
+Gerät auswählen
+Empfange...
+

@@ -1,0 +1,72 @@
+Sākt spēli
+Turpināt spēli
+Uzstādījumi
+Parādīt informāciju
+Bluetooth
+Par MeBoy
+Iziet
+Izvēlēties spēli
+Izdzēst
+Kopēt
+Atpakaļ
+Nav iespējams turpināt, kopš spēle vairs nav instalēta
+Katru izlaišanas skaits
+Ekrāna rotācija (x90°)
+Grafiska
+Mērogot
+Saglabāt attiecības
+Uzlabotie grafiskie elementi
+Uzlabotās mērogošanas režīms
+Skaņa
+Atļaut skaņu
+Ekspermentālie papildinājumi
+Valoda
+Cits
+Neatļaut GBC emulāciju
+Rādīt "Informāciju" izvēlnē
+Pieļaujamais saglabājamo datu lielums kB
+Saglabāt
+Informācija
+Brīvā atmiņa:
+Pauze
+Turpināt
+Saglabāt
+Rādīt/slēpt kadru izlaidumu skaitu
+Pilnekrāns
+Uzstādīt taustiņus
+Iziet
+Nospiediet atbilstošo tautiņu
+pa labi
+pa kreisi
+uz augšu
+uz leju
+A
+B
+Izvēlēties
+Sākt
+MeBoy kļūda
+Radās kļūda
+Nesaderīgs saglabātās spēles fails.
+Spēles ielādēšana neizdevās.
+Neizdevās atsākt saglabāto spēli
+Nav iespējams ielādēt saglabāto datu sarakstu.
+Nosūtīt datus
+Saglabātais-RAM
+Nosūtīt saglabāto spēli
+Saglabātās spēles
+Saņemt datus
+Atcelt
+Bluetooth pārraide veiksmīgi pabeigta.
+Bluetooth pārraide neizdevās.
+Netika atrasta neviena Bluetooth ierīce.
+Pārsūta...
+Šajā ierīcē nav iespējams savienoties ar MeBoy.
+Nav iespējams saņemt datus, jo tie neatbilst nevienai instalētajai spēlei.
+Saņemtos datus nav iespējams saglabāt.
+Nevienai no instalētajām spēlēm nav atbilstošu datu.
+Meklē tuvumā esošās ierīces. Pārliecinieties, ka ierīce, kurai jūs vēlaties nosūtīt datus ir "saņemt datus" režīmā.
+Mēģina savienoties ar MeBoy uz izvēlētās ierīces...
+Gaida, kamērt dati tiks pārsūtīti...
+Nesaderīga versija.
+Izvēlēties ierīci
+Saņem...

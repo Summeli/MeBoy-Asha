@@ -1,0 +1,72 @@
+Nouveau jeu
+Reprendre une partie
+Paramètres
+Afficher le journal
+Bluetooth
+A propos de MeBoy
+Quitter
+Sélectionner le jeu
+Supprimer
+Dupliquer
+Retour
+Impossible de reprendre car le jeu n'est pas installé
+Saut d'images
+Nombre de rotations 90°
+Graphismes
+Adapter l'image à l'écran
+Conserver les proportions
+Graphismes avancés
+Adaptation personnalisée
+Son
+Activer le son
+Fonctionnalités expérimentales
+Langue
+Autres
+Désactiver GBC
+Afficher "Journal" dans le menu
+Taille de cartouche max kB
+Enregistrer
+Journal
+Mémoire libre:
+Pause
+Reprendre
+Suspendre
+Afficher/masquer images par seconde
+Plein écran
+Configurer les touches
+Quitter
+Choisissez une touche pour
+droite
+gauche
+haut
+bas
+A
+B
+Select
+Start
+Erreur de MeBoy
+Une erreur est survenue
+Sauvegarde incompatible
+Echec du chargement du jeu
+Echec de mise à jour du jeu sauvegardé
+Impossible de charger la liste des jeux
+Envoyer une sauvegarde RAM
+Sauvegarde RAM
+Envoyer partie suspendue
+Parties suspendues
+Sauvegardes reçues
+Annuler
+Transmission par Bluetooth terminée avec succès.
+Echec de la transmission par Bluetooth.
+Aucun périphérique bluetooth détecté.
+Transfert en cours...
+Impossible de se connecter à MeBoy sur le périphérique
+Impossible de recevoir la sauvegarde car elle ne correspond à aucun jeu installé.
+Impossible d'enregistrer la sauvegarde reçue.
+Aucun des jeux installés n'a de sauvegarde RAM.
+Recherche des périphériques à portée. Vérifiez que le périphérique récepteur de la sauvegarde est bien en mode "réception de sauvegarde".
+Tentative de connexion de MeBoy au périphérique sélectionné...
+Attente du transfert d'une sauvegarde...
+Version incompatible.
+Sélectionner un périphérique
+Réception...

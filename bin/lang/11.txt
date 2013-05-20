@@ -1,0 +1,72 @@
+Spustit hru
+Načíst pozici
+Nastavení
+Zobrazit log
+Bluetooth
+O MeBoy
+Konec
+Vybrat Hru
+Smazat
+Duplidovat
+Zpět
+Nelze načíst, protože hra není nainstalovaná
+Frame skip
+Počet otočení o 90°
+Grafika
+Roztáhnout na obrazovku
+Zachovat proporce
+Pokročilá grafika
+Pokročilá změna rozlišení
+Zvuk
+Zapnout zvuk
+Experimentálnosti
+Jazyk
+Další
+Vypnout barvy
+Zobrazit položku Log v menu
+Maximální načtená velikost v kB
+Uložit
+Log
+Volná paměť:
+Pauza
+Obnovit
+Uložit
+Zobrazit/schovat framerate
+Celá obrazovka
+Nastavit tlačítka
+Ukončit
+Stiskněte tlačítko pro:
+vpravo
+vlevo
+nahoru
+dolů
+A
+B
+Select
+Start
+Chyba v MeBoy
+Chyba
+Nekompatibilní uložená hra.
+Načítání hry selhalo
+Změna uložené pozice se nezdařila
+Nelze načíst seznam her.
+Poslat hru s vlastním ukládáním.
+Vlastní uložení(C-RAM)
+Poslat uloženou pozici
+Uložené pozice
+Přijmout pozici
+Zrušit
+Bluetooth přenos proběhl v pořádku.
+Bluetooth přenos se nezdařil.
+Žádné zařízení nenalezeno.
+Odesílání...
+MeBoy není na druhém zařízení spuštěn.
+Pozici nelze přijmout, protože neodpovídá žádné z instalovaných her.
+Přijatou pozici nelze uložit.
+Žádná z instalovaných her nemá vlastní ukládání.
+Hledání zařízení poblíž... Zkontrolujte, zda je zařízení nastaveno na příjem pozice.
+Připojování k Meboy na zvoleném zařízení...
+Čekání na pozici k přenosu...
+Nekompatibilní verze.
+Výběr zařízení
+Příjem...

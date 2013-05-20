@@ -1,0 +1,72 @@
+Mulai Baru
+Lanjutkan
+Pengaturan
+Lihat catatan
+Bluetooth
+Tentang Meboy
+Keluar
+Pilih permainan
+Hapus
+Duplikat
+Kembali
+Tidak bisa melanjutkan karena permainannya tidak terinstall
+Frameskip
+Putar Layar (x90)
+Grafis
+Selebar layar
+Sesuai Skala
+Grafis tingkat lanjut
+Mode pengukuran tingkat lanjut
+Suara
+Aktifkan suara
+Fitur eksperimental
+Bahasa
+Lainnya
+Nonaktifkan emulasi GBC
+Tampilkan "catatan" di menu
+Ukuran kb maksimal rom yang dibuka
+Simpan
+Catatan
+Memori bebas:
+Istirahat
+Lanjutkan
+Simpan
+Tampilkan/Sembunyikan framerate
+Layar penuh
+Atur navigasi
+Keluar
+Tekan tombol untuk
+Kanan
+Kiri
+Atas
+Bawah
+A
+B
+Select
+Start
+Meboy rusak
+Kerusakan terjadi
+Permainan tidak kompatibel
+Permainan gagal dibuka
+Gagal melanjutkan permainan
+Daftar permainan tidak bisa dibuka
+Kirim rom
+Rom
+Kirim data simpanan
+Permainan tersimpan
+Menerima data simpanan
+Batal
+Pengiriman bluetooth sukses
+Pengiriman bluetooth gagal
+Perangkat bluetooth tidak ditemukan
+Sedang Dikirim...
+Tidak bisa berhubungan dengan meboy pada perangkat ini
+Data simpanan ditolak karena tidak ada permainan yang sesuai
+Data simpanan yang doterima tidak bisa disimpan
+Semua permainan terinstall tidak memiliki rom
+Sedang mencari perangkat terdekat. Pastikan perangkat tujuan berada pada mode "menerima data simpanan."
+Mencoba berhubungan dengan Meboy pada perangkat ini
+Menunggu data simpanan untuk dikirim
+Versinya tidak kompatibel
+Pilih perangkat
+Menerima...

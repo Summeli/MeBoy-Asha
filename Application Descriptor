@@ -1,0 +1,8 @@
+MIDlet-Version: 1.0.0
+MIDlet-Vendor: Antti Pohjola
+MIDlet-Jar-URL: MeBoy.jar
+MicroEdition-Configuration: CLDC-1.0
+Nokia-MIDlet-App-Orientation: portrait
+MicroEdition-Profile: MIDP-2.1
+MIDlet-1: MeBoy,/icon.png,MeBoy
+MIDlet-Name: MeBoy

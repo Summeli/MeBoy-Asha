@@ -1,0 +1,72 @@
+Nowa Gra
+Wznów Grę
+Ustawienia
+Pokaż log
+Bluetooth
+O Programie
+Wyjscie
+Wybierz Grę
+Usuń
+Skopiuj
+Powrót
+Nie można wznowić gry ponieważ nie jest ona zainstalowana
+Przeskok klatek
+Ilośc obrotów o 90°
+Grafika
+Dopasuj do ekranu
+Zachowaj proporcje
+Zaawansowana emulacja grafiki
+Zaawansowane skalowanie
+Dźwięk
+Włącz dźwięk
+Eksperymentalne usprawnienia
+Język
+Inne
+Wyłącz emulację GBC
+Pokazuj "Log" w menu
+Max. wielkość wczytanego  fragmentu gry[kB]
+Zapisz
+Log
+Wolna pamięc:
+Pauza
+Wznów
+Zapisz
+Pokaż/ukryj ilość klatek na sek.
+Pełny Ekran
+Sterowanie
+Wyłącz
+Wciśnij
+prawo
+lewo
+góra
+dół
+A
+B
+Select
+Start
+Błąd MeBoy'a
+Wystąpił błąd
+Niekompatybilny zapis stanu gry
+Wczytanie gry nie powiodło się
+Aktualizacja zapisu stanu gry nie powiodła się
+Wczytanie listy gier nie powiodło się
+Wyślij zawartość wewnętrznego RAMu gry
+Wewnętrzny RAM gier
+Wyślij zapis stanu gry
+Zapisy stanów gier
+Odbierz zapis stanu gry
+Anuluj
+Transmisja Bluetooth zakończona sukcesem.
+Transmisja Bluetooth nie powiodła się.
+Nie wykryto urządzeń z Bluetooth.
+Przesyłam...
+Połączenie z MeBoy'em na wybranym urządzeniu nie powiodło się.
+Nie można odebrać zapisu stanu gry, ponieważ nie pasuje on do żadnej z zainstalowanych gier.
+Zapisanie odebranego stanu gry nie powiodło się.
+Żadna z zainstalowanych gier nie posiada wewnętrznego zapisu stanu.
+Szukam urządzeń. Upewnij się, że wybrane urządzenie docelowe jest w trybie "Odbierz zapis stanu gry".
+Próba połączenia z MeBoy'em na wybranym urządzeniu...
+Oczekiwanie na transmisje zapisanego stanu gry...
+Niekompatybilna wersja
+Wybierz urządzenie
+Odbieram...

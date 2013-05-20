@@ -1,0 +1,72 @@
+Start Spil
+Fortsæt Spil
+Indstillinger
+Vis Log
+Bluetooth
+Om MeBoy
+Afslut
+Vælg Spil
+Slet
+Kopier
+Tilbage
+Kan ikke fortsætte fordi spillet ikke er installeret
+Spring billeder over
+Skærm rotation (x90°)
+Grafik
+Scalér til at passe
+Bevar proportioner
+Avanceret grafik
+Avanceret skalering
+Lyd
+Aktiver lyd
+Eksperimentelle funktioner
+Sprog
+Andet
+Deaktiver GBC emulation
+Vis "Log" i menuen
+Største cart størrelse i kB
+Gem
+Log
+Tilgængelig hukommelse:
+Pause
+Forsæt
+Gem tilstand
+Vis/skjul opdateringshastighed
+Fuld skærm
+Indstil knapper
+Afslut
+Tryk på knappen for
+højre
+venstre
+op
+ned
+A
+B
+Select
+Start
+MeBoy Fejl
+En fejl er opstået
+Inkompatibelt gemt spil.
+Indlæsning af spillet fejlede
+Kunne ikke opdatere spillets gemte tilstand
+Kunne ikke indlæse cart listen.
+Send cart-RAM
+Cart-RAM
+Send gemte spil tilstande
+Gemte spil tilstande
+Modtag gemt spil
+Annuller
+Bluetooth overførslen blev udført.
+Bluetooth overførslen fejlede.
+Ingen Bluetooth enheder fundet.
+Overfører...
+Kunne ikke forbinde til MeBoy på enheden.
+Det gemte spil kunne ikke modtages, fordi det ikke passer til nogen af de installerede spil.
+Det modtagne gemte spil kunne ikke blive gemt.
+Ingen af de gemte spil har cart-RAM.
+Søger efter enheder in nærheden. Kontroller at enhden du vil sende til er i "modtag gemt spil" tilstand.
+Forsøger at forbinde til MeBoy på den valgte enhed...
+Venter på at det gemte spil bliver overført...
+Inkompatibel version.
+Vælg enhed
+Modtager...

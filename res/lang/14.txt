@@ -1,0 +1,72 @@
+Pokreni igru
+Nastavi igru
+Podešavanja
+Prikaži evidenciju
+Bluetooth
+O programu
+Izlaz
+Odaberite igru
+Obriši
+Dupliraj
+Nazad
+Ne može se nastaviti jer igra nije instalirana
+Preskakanje sličica
+Rotacija ekrana (x90°)
+Grafika
+Prilagodi ekranu
+Zadrži proporcije
+Napredna grafika
+Napredni mod prilagođavanja
+Zvuk
+Omogući zvuk
+Eksperimentalne funkcije
+Jezik
+Ostalo
+Onemogući GBC emulaciju
+Pokaži "Evidencija" u meniju
+Maksimalna veličina učitanog kertridža kB
+Sačuvaj
+Evidencija
+Slobodna memorija:
+Pauza
+Nastavi
+Suspenzij
+Prikaži/sakrij broj sličica po sekundi
+Preko celog ekrana
+Podesi kontrole
+Izađi iz
+Pritisnite dugme za
+desno
+levo
+gore
+dole
+A
+B
+Select
+Start
+MeBoy greška
+Pojavila se greška
+Nepodržan format sačuvane igre.
+Učitavanje ogre nije uspelo
+Nastavljanje suspendovane igre nije uspelo
+Ne mogu da učitam listu kertridža.
+Slanje cart-RAM-a
+Cart-RAM
+Slanje suspendovane igre
+Suspendovane igre
+Prijem sačuvane igre
+Odustani
+Bluetooth prenos uspešan.
+Bluetooth prenos neuspešan.
+Nijedan Bluetooth uređaj nije nađen.
+Slanje...
+Ne mogu da se spojim sa MeBoy-em na uređaju.
+Datoteka sačuvane igre nije primljena jer se ne poklapa ni sa jednom instalisanom igrom.
+Primljena sačuvana igre nije mogla biti sačuvana.
+Nijedna od instalisanih igara nema cart-RAM.
+Traženje uređaja u blizini... Uverite se da je uređaj na koji šaljete u "Prijem sačuvane igre" modu.
+Pokušaj spajanja sa MeBoy-em na odabranom uređaju...
+Čeka se na prenos sačuvane igre...
+Nepodržana verzija.
+Birajte uređaj
+Prijem...

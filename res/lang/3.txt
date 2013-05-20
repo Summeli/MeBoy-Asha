@@ -1,0 +1,73 @@
+Iniciar Jogo
+Continuar Jogo
+Opções
+Mostrar Log
+Bluetooth
+Sobre MeBoy
+Sair
+Selecionar Jogo
+Deletar
+Duplicar
+Voltar
+Não pôde carregar, pois o jogo não está instalado
+Pulo de Frame
+Numero de giros de 90°
+Gráficos
+Ajustar à tela
+Manter proporções
+Gráficos Avançados
+Modo de escala avançado
+Som
+Ativar Som
+Recursos experimentais
+Idioma
+Outro
+Desativar GBC
+Mostrar "Log" no menu
+Tamanho máximo carregado da ROM kb
+Salvar
+Log
+memória livre:
+Pausar
+Continuar
+Salvar
+Mostrar/Ocultar FPS
+Tela cheia
+Config. Botões
+Sair de
+press. o botão para
+direita
+esquerda
+cima
+baixo
+a
+b
+select
+start
+Erro no MeBoy
+Um erro ocorreu
+Jogo salvo incompatível
+Carregamento de jogo falhou
+Falha ao atualizar jogo salvo
+Não podê ser carregada a lista de jogos.
+Enviar ROM-RAM
+ROM-RAM
+Enviar jogo salvo
+Jogos salvos
+Receber jogo salvo
+Cancelar
+Transmissão Bluetooth completa com sucesso.
+Transmissão Bluetooth falhou.
+Nenhum dispositivo Bluetooth encontrado.
+Transmitindo...
+Não pôde conectar o MeBoy no dispositivo.
+O jogo salvo não pôde ser recebido pois não é compatível com os jogos instalados.
+O jogo salvo não pôde ser salvo.
+Nenhum dos jogos instalados contém
+Procurando por dispositivos próximos. Tenha certeza que o dispositivo o qual você deseja enviar esteja em modo de recebimento.
+Tentando conectar o MeBoy no dispositivo selecionado...
+Esperando pela transferência...
+Versão incompatível.
+Selecionar dispositivo
+Recebendo...
+

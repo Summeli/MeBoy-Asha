@@ -1,0 +1,73 @@
+Pradėti Žaidimą
+Tęsti Žaidimą
+Nustatymai
+Rodyti Informaciją
+Bluetooth
+Apie MeBoy
+Išeiti
+Pasirinkti Žaidimą
+Ištrinti
+Padvigubinti
+Atgal
+Negalima tęsti ,nes žaidimas nėra įdiegtas 
+Kadrų peršokimas
+Ekrano pasukimas (x90°)
+Grafika
+Sutalpinti ekrane
+Palikti proporcijas
+Pažangesnė grafika
+Pažangesnis sutalpinimas
+Garsas
+Įjungti garsą
+Eksperimentinės savybės
+Kalba
+Kita
+Išjungti GBC nuskaitymą
+Rodyti informacija MeBoy menu
+Didžiausias pakrauto žaidimo dydis kB
+Išsaugoti
+Informacija
+Laisva atmintis: 
+Pauzė
+Tęsti
+Sustabdyti
+Rodyti/slėpti kadrus
+Per visą ekraną
+Nustatyti klavišus
+Išeiti
+Paspausti klavišą
+dešinė
+kairė
+viršus
+apačia
+A
+B
+Select
+Start
+MeBoy klaida
+Įvyko klaida
+Nesuderinamas išsaugotas žaidimas
+Žaidimo įkrovimas nepavyko
+Nepavyko atnaujinti sustabdyto žaidimo
+Negali įkrauti žaidimų sarašo
+Siųsti žaidimo-RAM
+Žaidimo-RAM
+Siųsti sustabdytą žaidimą
+Sustabdyti žaidimai
+Gauti išsaugotą žaidimą
+Atšaukti
+Bluetooth perdavimas įvyko sekmingai.
+Bluetooth perdavimas nepavyko.
+Nerasta Bluetooth prietaisų.
+Perdavimas...
+Negali prisijungti prie MeBoy prietaiso.
+Išsaugotasis žaidimas negalėjo būti išsiųstas ,nes neatitiko nei vieno įdiegto žaidimo
+Gautas išsaugotasis žaidimas negali būti išsaugotas.
+Nei vienas iš įdiegtų žaidimų neturi žaidimo-RAM.
+Ieškoma prietaisų. Isitikinkite ,jog prietaisas kuriam siunčiete yra "Gauti išsaugotą žaidimą" rėžime.
+Bandoma prisijungti prie MeBoy pasirinktame prietaise...
+Laukiama kol išsaugotas žaidimas bus perkeltas...
+Neatitinka versija.
+Pasirinkite prietaisą
+Gaunama...
+
