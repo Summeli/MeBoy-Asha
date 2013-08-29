@@ -26,6 +26,11 @@ Place - Suite 330, Boston, MA 02111-1307, USA.
 
 */
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.microedition.io.Connector;
+import javax.microedition.io.file.FileConnection;
 import javax.microedition.media.*;
 import javax.microedition.media.control.*;
 
@@ -2492,10 +2497,22 @@ public class Dmgcpu implements Runnable {
 	/** Create a cartridge object, loading ROM and any associated battery RAM from the cartridge
 		*  filename given. */
 	private final void initCartridge() {
+		 InputStream is;
+		 FileConnection fileConn;
+       try {
+             fileConn =
+                    (FileConnection) Connector.open(cartName, Connector.READ);
+
+
+             is = fileConn.openInputStream();
+       } catch (IOException e) {
+    	  throw new RuntimeException(MeBoy.literal[49] + " (" + cartName + ")");
+       }
+       /*
 		java.io.InputStream is = getClass().getResourceAsStream(cartName + '0');
 		if (is == null) {
 			throw new RuntimeException(MeBoy.literal[49] + " (" + cartName + ")");
-		}
+		}*/
 		try {
 			byte[] firstBank = new byte[0x2000];
 			
@@ -2524,7 +2541,11 @@ public class Dmgcpu implements Runnable {
 					if ((i & 15) == 0) {
 						// open next file
 						is.close();
-						is = getClass().getResourceAsStream(cartName + (i >> 4));
+						fileConn.close();
+			            fileConn =
+			                     (FileConnection) Connector.open(cartName + (i >> 4), Connector.READ);
+			            is = fileConn.openInputStream();
+						//is = getClass().getResourceAsStream(cartName + (i >> 4));
 					}
 					
 					total = 0x2000;
@@ -2546,6 +2567,7 @@ public class Dmgcpu implements Runnable {
 				loadedRomBanks = 1;
 			}
 			is.close();
+			fileConn.close();
 			
 			memory[0] = rom[0];
 			memory[1] = rom[1];

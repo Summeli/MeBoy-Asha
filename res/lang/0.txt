@@ -1,4 +1,4 @@
-Start Game
+Load Game
 Resume Game
 Settings
 Show Log

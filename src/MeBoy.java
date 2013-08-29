@@ -32,6 +32,8 @@ import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
 
+
+
 /**
  * The main class offers a list of games, read from the file "carts.txt". It
  * also handles logging.
@@ -88,6 +90,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
 	
+	//FileSelector
+	private FileSelector fileSelector;
 	
 	public void startApp() {
 		if (instance == this) {
@@ -109,6 +113,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 		if (!upgradeSavegames())
 			return;
 
+		fileSelector = new FileSelector(this);
 		showMainMenu();
 	}
 
@@ -389,6 +394,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 
 	public void destroyApp(boolean unconditional) {
+		  fileSelector.stop();
 	}
 
 	public void unloadCart() {
@@ -463,7 +469,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private void mainMenuCommand(Command com) {
 		String item = mainMenu.getString(mainMenu.getSelectedIndex());
 		if (item == literal[0]) {
-			showCartList();
+			//Start the fileSelector
+			fileSelector.initialize();
+			display.setCurrent(fileSelector);
 		} else if (item == literal[1]) {
 			showResumeGame();
 		} else if (item == literal[2]) {
@@ -481,30 +489,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 		} else {
 			showError(null, "Unknown command: " + com.getLabel(), null);
 		}
-	}
-
-	private void showCartList() {
-		
-		//Start ROM
-		String selectedCartID = "E://ducktales.gb";
-		String selectedCartDisplayName = "E://ducktales.gb";//cartDisplayName[ix];
-		try {
-			gbCanvas = new GBCanvas(selectedCartID, this, selectedCartDisplayName);
-			cartList = null;
-			display.setCurrent(gbCanvas);
-		} catch (Exception e) {
-			showError(null, "error#1", e);
-		}
-		
-		/*
-		cartList = new List(literal[7], List.IMPLICIT);
-		
-		for (int i = 0; i < numCarts; i++)
-			cartList.append(cartDisplayName[i], null);
-
-		cartList.addCommand(new Command(literal[10], Command.BACK, 1));
-		cartList.setCommandListener(this);
-		display.setCurrent(cartList);*/
 	}
 
 	private void cartListCommand(Command com) {
@@ -781,5 +765,29 @@ public class MeBoy extends MIDlet implements CommandListener {
 			if (list[i].startsWith(match))
 				return i;
 		return -1;
+	}
+	
+	//File selector related functions
+	public void fileSelectorExit(){
+		showMainMenu();
+	}
+	
+	public void showErrorMsg(String msg){
+		log(msg);
+	}
+	
+	public void showError(Exception e){
+		showErrorMsg(e.getMessage());
+	}
+	
+	public void loadSelectedRom(String uri){
+		String selectedCartDisplayName = "ROM";//cartDisplayName[ix];
+		try {
+			gbCanvas = new GBCanvas(uri, this, selectedCartDisplayName);
+			cartList = null;
+			display.setCurrent(gbCanvas);
+		} catch (Exception e) {
+			showError(null, "error#1", e);
+		}
 	}
 }
