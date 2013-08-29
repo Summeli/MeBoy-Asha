@@ -43,13 +43,13 @@ import com.nokia.mid.ui.orientation.Orientation;
 public class MeBoy extends MIDlet implements CommandListener {
 	// Settings, etc.
 	public static final boolean debug = false;
-	public static int rotations = 0;
+	public static final int rotations = 1;
 	public static int maxFrameSkip = 3;
 	public static boolean enableScaling = true;
 	public static int scalingMode = 0;
 	public static boolean keepProportions = true;
 	public static boolean fullScreen = true;
-	public static boolean disableColor = false;
+	public static final boolean disableColor = false;
 	public static boolean enableSound = false;
 	public static boolean advancedSound = false;
 	public static boolean advancedGraphics = false;
@@ -632,14 +632,14 @@ public class MeBoy extends MIDlet implements CommandListener {
 		
 		int f = Integer.parseInt(frameSkipField.getString());
 		maxFrameSkip = Math.max(Math.min(f, 59), 0);
-		rotations = Integer.parseInt(rotationField.getString()) & 3;
+		//rotations = Integer.parseInt(rotationField.getString()) & 3;
 		lazyLoadingThreshold = Math.max(Integer.parseInt(loadThresholdField.getString()) / 16, 20);
 		enableScaling = graphicsGroup.isSelected(0);
 		keepProportions = graphicsGroup.isSelected(1);
 		advancedGraphics = graphicsGroup.isSelected(2);
 		f = Integer.parseInt(scalingModeField.getString());
 		scalingMode = Math.max(Math.min(f, 3), 0);
-		disableColor = miscSettingsGroup.isSelected(0);
+		//disableColor = miscSettingsGroup.isSelected(0);
 		showLogItem = miscSettingsGroup.isSelected(1);
 		enableSound = soundGroup.isSelected(0);
 		advancedSound = soundGroup.isSelected(1);

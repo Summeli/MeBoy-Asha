@@ -29,8 +29,11 @@ Place - Suite 330, Boston, MA 02111-1307, USA.
 import javax.microedition.lcdui.*;
 import javax.microedition.rms.*;
 
+import com.nokia.mid.ui.multipointtouch.MultipointTouch;
+import com.nokia.mid.ui.multipointtouch.MultipointTouchListener;
 
-public class GBCanvas extends Canvas implements CommandListener {
+
+public class GBCanvas extends Canvas implements CommandListener, MultipointTouchListener {
 	public MeBoy parent;
 	private Dmgcpu cpu;
 	private int w, h, l, t;
@@ -81,6 +84,9 @@ public class GBCanvas extends Canvas implements CommandListener {
 		updateCommands();
 		
 		setFullScreenMode(MeBoy.fullScreen);
+		MultipointTouch multitouch = MultipointTouch.getInstance();
+		 
+		multitouch.addMultipointTouchListener(this);
 	}
 	
 	// Constructor for loading suspended games
@@ -111,6 +117,33 @@ public class GBCanvas extends Canvas implements CommandListener {
 		cpuThread = new Thread(cpu);
 		cpuThread.start();
 	}
+	
+	public void pointersChanged(int[] pointerIds) {
+		if(pointerIds != null)
+		{
+			for(int i = 0; i < pointerIds.length; i++)
+			{
+				int touchState = MultipointTouch.getState(pointerIds[i]);
+	 
+				int x = MultipointTouch.getX(pointerIds[i]);
+				int y = MultipointTouch.getY(pointerIds[i]);
+				if(touchState == MultipointTouch.POINTER_RELEASED){
+					cpu.buttonUp(2);
+				}else if(touchState == MultipointTouch.POINTER_PRESSED){
+					cpu.buttonDown(2);
+				}else if(touchState == MultipointTouch.POINTER_DRAGGED){
+					
+				}
+	 
+			}
+		}
+		
+	}
+	
+
+    private void pushButtons(){
+    	
+    }
 	
 	private void updateCommands() {
 		// remove and add all commands, to prevent pause/resume to end up last
@@ -418,7 +451,7 @@ public class GBCanvas extends Canvas implements CommandListener {
 				if (b.length >= 36)
 					MeBoy.maxFrameSkip = getInt(b, 32);
 				if (b.length >= 40)
-					MeBoy.rotations = getInt(b, 36);
+					//MeBoy.rotations = getInt(b, 36);
 				if (b.length >= 44)
 					MeBoy.lazyLoadingThreshold = getInt(b, 40);
 				
@@ -442,7 +475,7 @@ public class GBCanvas extends Canvas implements CommandListener {
 					MeBoy.enableScaling = (b[index] & 1) != 0;
 					MeBoy.keepProportions = (b[index] & 2) != 0;
 					MeBoy.fullScreen = (b[index] & 4) != 0;
-					MeBoy.disableColor = (b[index] & 8) != 0;
+					//MeBoy.disableColor = (b[index] & 8) != 0;
 					MeBoy.language = (b[index] & 16) != 0 ? 1 : 0;
 					MeBoy.enableSound = (b[index] & 32) != 0;
 					MeBoy.advancedSound = (b[index] & 64) != 0;
@@ -592,5 +625,6 @@ public class GBCanvas extends Canvas implements CommandListener {
         parent = null;
         System.gc();
     }
+
 }
 
