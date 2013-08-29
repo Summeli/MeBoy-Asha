@@ -32,6 +32,8 @@ import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
 
+import com.nokia.mid.ui.orientation.Orientation;
+
 
 
 /**
@@ -46,7 +48,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public static boolean enableScaling = true;
 	public static int scalingMode = 0;
 	public static boolean keepProportions = true;
-	public static boolean fullScreen = false;
+	public static boolean fullScreen = true;
 	public static boolean disableColor = false;
 	public static boolean enableSound = false;
 	public static boolean advancedSound = false;
@@ -183,32 +185,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 		}
 		return null;
 	}
-	
-	/*
-	private boolean readCartNames() {
-		try {
-			InputStream is = getClass().getResourceAsStream("/carts");
-			DataInputStream dis = new DataInputStream(is);
-			
-			numCarts = dis.readInt();
-			
-			cartDisplayName = new String[numCarts];
-			cartFileName = new String[numCarts];
-			cartID = new String[numCarts];
-			
-			for (int i = 0; i < numCarts; i++) {
-				cartDisplayName[i] = dis.readUTF();
-				cartFileName[i] = dis.readUTF();
-				cartID[i] = dis.readUTF();
-			}
-			is.close();
-		} catch (Exception e) {
-			fatalError = true;
-			showError(literal[51], null, e);
-			return false;
-		}
-		return true;
-	}*/
 	
 	public boolean upgradeSavegames() {
 		// upgrade cart ram:
