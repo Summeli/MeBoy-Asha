@@ -428,10 +428,12 @@ public class MeBoy extends MIDlet implements CommandListener {
 
 	private void showMainMenu() {
 		mainMenu = new List("MeBoy 1.0", List.IMPLICIT);
-		mainMenu.append(literal[0], null);
+		//if game is paused, first item should be resume
 		if(gbCanvas != null && gbCanvas.isPaused()){
 			mainMenu.append(literal[1], null);
 		}
+		
+		mainMenu.append(literal[0], null);
 		if (suspendName20.length > 0) {
 			mainMenu.append(literal[1], null);
 		}

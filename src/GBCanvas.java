@@ -168,21 +168,29 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 				}else if(touchState == MultipointTouch.POINTER_PRESSED && button != BUTTON_NULL){
 					pointerButtons.put(pointer,new Integer(button));
 					cpu.buttonDown(button);
-				}else if(touchState == MultipointTouch.POINTER_DRAGGED){
+				}else if(touchState == MultipointTouch.POINTER_DRAGGED){	
 					//Check if there was a previous button pressed with this pointer
 					Integer prevkey = (Integer) pointerButtons.get(pointer);
+					//no prevkey, store new one, 
+					if( prevkey == null){
+						if(button != BUTTON_NULL){
+							cpu.buttonDown(button);
+							pointerButtons.put(pointer, new Integer(button));
+						}
+						return;
+					}
+					
+					//check if previouskey was already pressed
 					int previousKey = prevkey.intValue();
 					if( previousKey != button){
-						if(previousKey != BUTTON_NULL)
-							cpu.buttonUp(previousKey);
-						cpu.buttonUp(prevkey.intValue());
-						if(button != BUTTON_NULL)
+						cpu.buttonUp(previousKey);
+						if(button != BUTTON_NULL) {
 							cpu.buttonDown(button);
-						pointerButtons.remove(pointer);
-						pointerButtons.put(pointer, new Integer(button));
+							pointerButtons.remove(pointer);
+							pointerButtons.put(pointer, new Integer(button));
+						}
 					}
 				}
-	 
 			}
 		}
 		
