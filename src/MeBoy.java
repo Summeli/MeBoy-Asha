@@ -427,8 +427,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 
 	private void showMainMenu() {
-		mainMenu = new List("MeBoy 2.2", List.IMPLICIT);
+		mainMenu = new List("MeBoy 1.0", List.IMPLICIT);
 		mainMenu.append(literal[0], null);
+		if(gbCanvas != null && gbCanvas.isPaused()){
+			mainMenu.append(literal[1], null);
+		}
 		if (suspendName20.length > 0) {
 			mainMenu.append(literal[1], null);
 		}
@@ -449,7 +452,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 			fileSelector.initialize();
 			display.setCurrent(fileSelector);
 		} else if (item == literal[1]) {
-			showResumeGame();
+			resumeGame();
+			//showResumeGame();
 		} else if (item == literal[2]) {
 			showSettings();
 		}  else if (item == literal[4]) {
@@ -810,5 +814,16 @@ public class MeBoy extends MIDlet implements CommandListener {
 		} catch (Exception e) {
 			showError(null, "error#1", e);
 		}
+	}
+	
+	//Stuff returning from the emulator
+	public void pauseGame(){
+		gbCanvas.pause();
+		showMainMenu();
+	}
+	
+	public void resumeGame(){
+		display.setCurrent(gbCanvas);
+		gbCanvas.resumeGame();
 	}
 }

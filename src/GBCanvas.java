@@ -26,6 +26,8 @@ Place - Suite 330, Boston, MA 02111-1307, USA.
 
 */
 
+import java.util.Hashtable;
+
 import javax.microedition.lcdui.*;
 import javax.microedition.rms.*;
 
@@ -43,6 +45,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	private int[] previousTime = new int[16];
 	private int previousTimeIx;
 	
+	Hashtable pointerButtons = new Hashtable();
 	private Command pauseCommand = new Command(MeBoy.literal[30], Command.SCREEN, 0);
 	private Command resumeCommand = new Command(MeBoy.literal[31], Command.SCREEN, 0);
 	private Command saveCommand = new Command(MeBoy.literal[32], Command.SCREEN, 1);
@@ -56,6 +59,27 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
     private final static Image START_BUTTON_IMAGE = MeBoy.makeRotatedImage("/startbutton.png");
     private final static Image MENU_IMAGE = MeBoy.makeRotatedImage("/menuButton.png");
     
+	public final static int BUTTON_LEFT = 1;
+	public final static int BUTTON_UP = 2;
+	public final static int BUTTON_RIGHT = 0;
+	public final static int BUTTON_DOWN = 3;
+	public final static int BUTTON_A = 4;
+	public final static int BUTTON_B = 5;
+	public final static int BUTTON_START = 7;
+	public final static int BUTTON_SELECT = 6;
+	public final static int BUTTON_MENU = 8;
+	public final static int BUTTON_NULL = 10;
+	
+	private Rectangle UP_BUTTON_RECT;
+	private Rectangle DOWN_BUTTON_RECT;
+	private Rectangle RIGHT_BUTTON_RECT;
+	private Rectangle LEFT_BUTTON_RECT;
+	private Rectangle A_BUTTON_RECT;
+	private Rectangle B_BUTTON_RECT;
+	private Rectangle START_BUTTON_RECT;
+	private Rectangle SELECT_BUTTON_RECT;
+	private Rectangle MENU_BUTTON_RECT;
+	
 	private static int[] key = new int[] {KEY_NUM6, KEY_NUM4, KEY_NUM2, KEY_NUM8, KEY_NUM7, KEY_NUM9, KEY_POUND, KEY_STAR};
 	private String[] keyName = {
 		MeBoy.literal[38],
@@ -132,17 +156,59 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	 
 				int x = MultipointTouch.getX(pointerIds[i]);
 				int y = MultipointTouch.getY(pointerIds[i]);
-				if(touchState == MultipointTouch.POINTER_RELEASED){
-					cpu.buttonUp(2);
-				}else if(touchState == MultipointTouch.POINTER_PRESSED){
-					cpu.buttonDown(2);
+				int button = checkPointerButton(x,y);
+				Integer pointer = new Integer(pointerIds[i]);
+				if( button == BUTTON_MENU){
+					//go menu
+					parent.pauseGame();
+				}
+				if(touchState == MultipointTouch.POINTER_RELEASED && button != BUTTON_NULL){
+					pointerButtons.remove(pointer);
+					cpu.buttonUp(button);
+				}else if(touchState == MultipointTouch.POINTER_PRESSED && button != BUTTON_NULL){
+					pointerButtons.put(pointer,new Integer(button));
+					cpu.buttonDown(button);
 				}else if(touchState == MultipointTouch.POINTER_DRAGGED){
-					
+					//Check if there was a previous button pressed with this pointer
+					Integer prevkey = (Integer) pointerButtons.get(pointer);
+					int previousKey = prevkey.intValue();
+					if( previousKey != button){
+						if(previousKey != BUTTON_NULL)
+							cpu.buttonUp(previousKey);
+						cpu.buttonUp(prevkey.intValue());
+						if(button != BUTTON_NULL)
+							cpu.buttonDown(button);
+						pointerButtons.remove(pointer);
+						pointerButtons.put(pointer, new Integer(button));
+					}
 				}
 	 
 			}
 		}
 		
+	}
+
+	public int checkPointerButton( int x, int y){
+		if(UP_BUTTON_RECT.contains(x, y)){
+			return BUTTON_UP;
+		}else if(DOWN_BUTTON_RECT.contains(x, y)){
+			return BUTTON_DOWN;
+		}else if(RIGHT_BUTTON_RECT.contains(x, y)){
+			return BUTTON_RIGHT;
+		}else if(LEFT_BUTTON_RECT.contains(x, y)){
+			return BUTTON_LEFT;
+		}else if(MENU_BUTTON_RECT.contains(x, y)){
+			return BUTTON_MENU;
+		}else if(A_BUTTON_RECT.contains(x, y)){
+			return BUTTON_A;
+		}else if(B_BUTTON_RECT.contains(x, y)){
+			return BUTTON_B;
+		}else if(START_BUTTON_RECT.contains(x, y)){
+			return BUTTON_START;
+		}else if(SELECT_BUTTON_RECT.contains(x, y)){
+			return BUTTON_SELECT;
+		}
+		return BUTTON_NULL;
 	}
 	
 	
@@ -200,7 +266,17 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		if (t < 0)
 			t = 0;
 		
-		//cpu.setTranslation(trans == 0 ? l : 0, trans == 0 ? t : 0);
+	    //public Rectangle(xmin, ymax, xmax, ymin)
+	    //TODO: set different rects for 40 fulltouch and ASHA 1.0 devices
+		UP_BUTTON_RECT = new Rectangle(80,80,120,40);
+		LEFT_BUTTON_RECT = new Rectangle(40,40,80,0);
+		RIGHT_BUTTON_RECT = new Rectangle(40,120,80,80);
+		DOWN_BUTTON_RECT = new Rectangle(0,80,40,40);
+		MENU_BUTTON_RECT = new Rectangle(0,220,40,180);
+		A_BUTTON_RECT = new Rectangle(0,400,50,350);
+		B_BUTTON_RECT = new Rectangle(0,330,50,280);
+		START_BUTTON_RECT = new Rectangle(200,400,240,360);
+		SELECT_BUTTON_RECT = new Rectangle(200,40,240,0);
 	}
 	
 	public void keyReleased(int keyCode) {
@@ -284,6 +360,10 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	public final void pause() {
 		if (cpuThread == null)
 			return;
+		
+		//save also in here				
+		if (cpu.hasBattery())
+			saveCartRam();
 		
 		paused = true;
 		updateCommands();
@@ -636,5 +716,15 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
         System.gc();
     }
 
+    public boolean isPaused(){
+    	return paused;
+    }
+    public void resumeGame(){
+		paused = false;
+		updateCommands();
+		
+		cpuThread = new Thread(cpu);
+		cpuThread.start();
+    }
 }
 
