@@ -45,14 +45,14 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	private int[] previousTime = new int[16];
 	private int previousTimeIx;
 	
-	Hashtable pointerButtons = new Hashtable();
+	Hashtable pointerButtons = new Hashtable();/*
 	private Command pauseCommand = new Command(MeBoy.literal[30], Command.SCREEN, 0);
 	private Command resumeCommand = new Command(MeBoy.literal[31], Command.SCREEN, 0);
 	private Command saveCommand = new Command(MeBoy.literal[32], Command.SCREEN, 1);
 	private Command showFpsCommand = new Command(MeBoy.literal[33], Command.SCREEN, 3);
 	private Command fullScreenCommand = new Command(MeBoy.literal[34], Command.SCREEN, 4);
 	private Command setButtonsCommand = new Command(MeBoy.literal[35], Command.SCREEN, 5);
-	private Command exitCommand;
+	private Command exitCommand;*/
 	
     private final static Image DPAD_IMAGE = MeBoy.makeRotatedImage("/dpad.png");
     private final static Image BUTTONS_IMAGE = MeBoy.makeRotatedImage("/buttons.png");
@@ -107,7 +107,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		this.cartID = cartID;
 		this.cartDisplayName = cartDisplayName;
 		
-		exitCommand = new Command(MeBoy.literal[36] + " " + cartDisplayName, Command.SCREEN, 6);
+		//exitCommand = new Command(MeBoy.literal[36] + " " + cartDisplayName, Command.SCREEN, 6);
 		setCommandListener(this);
 		
 		updateCommands();
@@ -315,6 +315,10 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	}
 	
 	public void commandAction(Command c, Displayable s) {
+		if (c.getCommandType() == Command.BACK) {
+			//go back to menu
+			parent.pauseGame();
+		}
 		/*
 		try {
 			String label = c.getLabel();

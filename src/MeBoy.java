@@ -476,8 +476,12 @@ public class MeBoy extends MIDlet implements CommandListener {
 			destroyApp(true);
 			notifyDestroyed();
 		}else if( item == "Instructions"){
+			String enterMenu = "To enter back to the menu from the game screen press the small triangle on the center of the bottom screen\n\n";
+			//if Asha
+			//enterMenu ="To enter back to the manu from the gamescreen press back button\n\n";
 			showMessage(literal[5], "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
-					"Then open this app, and press load new game, and load the new ROM. Enojoy playing!;-)");
+					"Then open this app, and press load new game, and load the new ROM. \n\n +" + enterMenu +
+					"+Enojoy playing!;-)");
 		}else {
 			showError(null, "Unknown command: " + com.getLabel(), null);
 		}
