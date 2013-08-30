@@ -742,7 +742,52 @@ public class MeBoy extends MIDlet implements CommandListener {
 				return i;
 		return -1;
 	}
-	
+
+	static Image makeRotatedImage(String filename){
+		Image img = makeImage(filename);
+		
+		//simple rotation from forum.nokia 
+		//http://developer.nokia.com/Community/Wiki/Rotate_an_image_in_Java_ME
+		int width = img.getWidth();
+		int height = img.getHeight();
+	 
+		int angle = 90;
+		int[] rowData = new int[width];
+		int[] rotatedData = new int[width * height];
+		
+		int rotatedIndex = 0;
+		 
+		for(int i = 0; i < height; i++)
+		{
+			img.getRGB(rowData, 0, width, 0, i, width, 1);
+	 
+			for(int j = 0; j < width; j++)
+			{
+				rotatedIndex = 
+					angle == 90 ? (height - i - 1) + j * height : 
+					(angle == 270 ? i + height * (width - j - 1) : 
+						width * height - (i * width + j) - 1
+					);
+	 
+				rotatedData[rotatedIndex] = rowData[j];
+			}
+		}
+		return Image.createRGBImage(rotatedData, height, width, true);
+		
+	}
+    // loads a given image by name
+    static Image makeImage(String filename) {
+        Image image = null;
+
+        try {
+            image = Image.createImage(filename);
+        } catch (Exception e) {
+            // use a null image instead
+        }
+
+        return image;
+    }
+    
 	//File selector related functions
 	public void fileSelectorExit(){
 		showMainMenu();

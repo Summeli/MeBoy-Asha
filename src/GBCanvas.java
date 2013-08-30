@@ -51,6 +51,11 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	private Command setButtonsCommand = new Command(MeBoy.literal[35], Command.SCREEN, 5);
 	private Command exitCommand;
 	
+    private final static Image DPAD_IMAGE = MeBoy.makeRotatedImage("/dpad.png");
+    private final static Image BUTTONS_IMAGE = MeBoy.makeRotatedImage("/buttons.png");
+    private final static Image START_BUTTON_IMAGE = MeBoy.makeRotatedImage("/startbutton.png");
+    private final static Image MENU_IMAGE = MeBoy.makeRotatedImage("/menuButton.png");
+    
 	private static int[] key = new int[] {KEY_NUM6, KEY_NUM4, KEY_NUM2, KEY_NUM8, KEY_NUM7, KEY_NUM9, KEY_POUND, KEY_STAR};
 	private String[] keyName = {
 		MeBoy.literal[38],
@@ -140,10 +145,6 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		
 	}
 	
-
-    private void pushButtons(){
-    	
-    }
 	
 	private void updateCommands() {
 		// remove and add all commands, to prevent pause/resume to end up last
@@ -332,13 +333,14 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		}
 		
 		if (g.getClipWidth() != sw || g.getClipHeight() != clipHeight) {
-			g.setColor(0x666666);
+			g.setColor(0x111111);
 			g.fillRect(0, 0, w, h);
 		}
 		
 		if (MeBoy.showFps) {
 			paintFps(g);
 		}
+		
 		
 		g.setClip(l, t, sw, sh);
 		if (cpu.graphicsChip.frameBufferImage == null) {
@@ -360,6 +362,14 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 			g.setColor(0xffffff);
 			g.drawString(MeBoy.literal[30], w/2, h/2, 65);
 		}
+		
+		//Draw controls
+		g.setClip(0, 0, w, h);
+		g.drawImage(DPAD_IMAGE, 0, 0, Graphics.TOP | Graphics.LEFT);
+		g.drawImage(BUTTONS_IMAGE, 0, h - BUTTONS_IMAGE.getHeight(), Graphics.TOP | Graphics.LEFT);
+		g.drawImage(START_BUTTON_IMAGE, w -START_BUTTON_IMAGE.getWidth(), h - START_BUTTON_IMAGE.getHeight(), Graphics.TOP | Graphics.LEFT);
+		g.drawImage(START_BUTTON_IMAGE,  w -START_BUTTON_IMAGE.getWidth(), 0, Graphics.TOP | Graphics.LEFT);
+		g.drawImage(MENU_IMAGE, 0, h/2, Graphics.TOP | Graphics.LEFT);
 	}
 	
 	public static final void setInt(byte[] b, int i, int v) {

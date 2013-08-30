@@ -51,10 +51,10 @@ class FileSelector
     private final static String UPPER_DIR = "..";
     private final MeBoy midlet;
     
-    private final static Image ROOT_IMAGE = makeImage("/root.png");
-    private final static Image FOLDER_IMAGE = makeImage("/folder.png");
-    private final static Image FILE_IMAGE = makeImage("/file.png");
-    private final static Image logo = makeImage("/logo.png");
+    private final static Image ROOT_IMAGE = MeBoy.makeImage("/root.png");
+    private final static Image FOLDER_IMAGE = MeBoy.makeImage("/folder.png");
+    private final static Image FILE_IMAGE = MeBoy.makeImage("/file.png");
+    private final static Image logo = MeBoy.makeImage("/logo.png");
     private final Command openCommand =
             new Command("Open", Command.ITEM, 1);
     private final Command exitCommand =
@@ -119,18 +119,6 @@ class FileSelector
         currentRoot = null;
     }
 
-    // loads a given image by name
-    static Image makeImage(String filename) {
-        Image image = null;
-
-        try {
-            image = Image.createImage(filename);
-        } catch (Exception e) {
-            // use a null image instead
-        }
-
-        return image;
-    }
     
     private void loadRoots() {
         if (!rootsList.isEmpty()) {
