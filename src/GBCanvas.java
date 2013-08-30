@@ -112,7 +112,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		
 		updateCommands();
 		
-		setFullScreenMode(MeBoy.fullScreen);
+		setFullScreenMode(true);
 		MultipointTouch multitouch = MultipointTouch.getInstance();
 		 
 		multitouch.addMultipointTouchListener(this);
@@ -221,6 +221,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	
 	
 	private void updateCommands() {
+/*
 		// remove and add all commands, to prevent pause/resume to end up last
 		removeCommand(pauseCommand);
 		removeCommand(resumeCommand);
@@ -239,7 +240,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		addCommand(showFpsCommand);
 		addCommand(fullScreenCommand);
 		addCommand(setButtonsCommand);
-		addCommand(exitCommand);
+		addCommand(exitCommand);*/
 	}
 	
 	public void setDimensions() {
@@ -314,6 +315,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	}
 	
 	public void commandAction(Command c, Displayable s) {
+		/*
 		try {
 			String label = c.getLabel();
 			if (label.startsWith(MeBoy.literal[36])) {
@@ -361,7 +363,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 			MeBoy.showLog();
             if (MeBoy.debug)
                 th.printStackTrace();
-		}
+		}*/
 		repaint();
 	}
 
@@ -507,7 +509,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 					? 4 : 0) + (MeBoy.disableColor ? 8 : 0) + (MeBoy.enableSound ? 32 : 0) + (MeBoy.advancedSound
 					? 64 : 0) + (MeBoy.advancedGraphics ? 128 : 0));
 			b[index++] = (byte) MeBoy.language;
-			b[index++] = (byte) ((MeBoy.showFps ? 1 : 0) + (MeBoy.showLogItem ? 2 : 0));
+			//b[index++] = (byte) ((MeBoy.showFps ? 1 : 0) + (MeBoy.showLogItem ? 2 : 0));
 
 			b[index++] = (byte) MeBoy.suspendName20.length;
 			for (int i = 0; i < MeBoy.suspendName20.length; i++) {
@@ -570,14 +572,14 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 
 				if (b.length > index) {
 					// settings, part 1
-					MeBoy.enableScaling = (b[index] & 1) != 0;
+					//MeBoy.enableScaling = (b[index] & 1) != 0;
 					MeBoy.keepProportions = (b[index] & 2) != 0;
-					MeBoy.fullScreen = (b[index] & 4) != 0;
+					//MeBoy.fullScreen = (b[index] & 4) != 0;
 					//MeBoy.disableColor = (b[index] & 8) != 0;
 					MeBoy.language = (b[index] & 16) != 0 ? 1 : 0;
 					MeBoy.enableSound = (b[index] & 32) != 0;
 					MeBoy.advancedSound = (b[index] & 64) != 0;
-					MeBoy.advancedGraphics = (b[index] & 128) != 0;
+					//MeBoy.advancedGraphics = (b[index] & 128) != 0;
 					index++;
 				}
 
@@ -587,7 +589,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 
 				if (b.length > index) {
 					// settings, part 2
-					MeBoy.showFps = (b[index] & 1) != 0;
+					//MeBoy.showFps = (b[index] & 1) != 0;
 					MeBoy.showLogItem = (b[index] & 2) != 0;
 					index++;
 				}
@@ -729,8 +731,6 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
     }
     public void resumeGame(){
 		paused = false;
-		updateCommands();
-		
 		cpuThread = new Thread(cpu);
 		cpuThread.start();
     }

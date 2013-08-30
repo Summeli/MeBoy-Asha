@@ -45,15 +45,15 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public static final boolean debug = false;
 	public static final int rotations = 1;
 	public static int maxFrameSkip = 3;
-	public static boolean enableScaling = true;
-	public static int scalingMode = 0;
+	public final static boolean enableScaling = true;
+	public final static int scalingMode = 0;
 	public static boolean keepProportions = true;
-	public static boolean fullScreen = true;
+	public final static boolean fullScreen = true;
 	public static final boolean disableColor = false;
 	public static boolean enableSound = false;
 	public static boolean advancedSound = false;
-	public static boolean advancedGraphics = false;
-	public static boolean showFps = false;
+	public final static boolean advancedGraphics = false;
+	public final static boolean showFps = false;
 	public static boolean showLogItem = false;
 	public static int lazyLoadingThreshold = 64; // number of banks, each 0x4000 bytes = 16kB
 	public static int language;
@@ -84,11 +84,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 	// Settings
 	private Form settingsForm;
 	private TextField frameSkipField;
-	private TextField rotationField;
+	//private TextField rotationField;
 	private TextField loadThresholdField;
-	private TextField scalingModeField;
-	private ChoiceGroup graphicsGroup;
-	private ChoiceGroup miscSettingsGroup;
+	//private TextField scalingModeField;
+	//private ChoiceGroup graphicsGroup;
+	//private ChoiceGroup miscSettingsGroup;
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
 	
@@ -112,9 +112,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		/*
 		if (!readCartNames())
 			return;*/
-		if (!upgradeSavegames())
+		/*if (!upgradeSavegames())
 			return;
-
+*/
 		fileSelector = new FileSelector(this);
 		showMainMenu();
 	}
@@ -437,7 +437,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		if (suspendName20.length > 0) {
 			mainMenu.append(literal[1], null);
 		}
+		
 		mainMenu.append(literal[2], null);
+		mainMenu.append("Instructions", null);
 		mainMenu.append(literal[5], null);
 		if (showLogItem) {
 			mainMenu.append(literal[3], null);
@@ -461,14 +463,22 @@ public class MeBoy extends MIDlet implements CommandListener {
 		}  else if (item == literal[4]) {
 			showMessage("Error:","Not Implemented");
 		}else if (item == literal[5]) {
-			showMessage(literal[5], "MeBoy 2.2 © Björn Carlin, 2005-2009.\nhttp://arktos.se/meboy/");
+			showMessage(literal[5], "MeBoy 1.0.0 for S40 and Nokia Aha \n" +
+					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
+					                 "MeBoy is licenced under GPLv2 licence \n" +
+					                 "You can get the source code from: http://github.com/Summeli/Meboy \n\n"+
+					                 "Meboy was originnly developed for j2ME by: © Björn Carlin, 2005-2009.\nhttp://arktos.se/meboy/ \n\n"+
+					                 "LEGAL: This product is not affiliated with, nor authorized, endorsed or licensed in any way by Nintendo Corporation, its affiliates or subsidiaries.");
 		} else if (item == literal[3]) {
 			log(literal[29] + " " + Runtime.getRuntime().freeMemory() + "/" + Runtime.getRuntime().totalMemory());
 			showLog();
 		} else if (item == literal[6]) {
 			destroyApp(true);
 			notifyDestroyed();
-		} else {
+		}else if( item == "Instructions"){
+			showMessage(literal[5], "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
+					"Then open this app, and press load new game, and load the new ROM. Enojoy playing!;-)");
+		}else {
 			showError(null, "Unknown command: " + com.getLabel(), null);
 		}
 	}
@@ -587,18 +597,18 @@ public class MeBoy extends MIDlet implements CommandListener {
 
 		frameSkipField = new TextField(literal[12], "" + maxFrameSkip, 3, TextField.NUMERIC);
 		settingsForm.append(frameSkipField);
-		rotationField = new TextField(literal[13], "" + rotations, 2, TextField.NUMERIC);
-		settingsForm.append(rotationField);
-
+	//	rotationField = new TextField(literal[13], "" + rotations, 2, TextField.NUMERIC);
+	//	settingsForm.append(rotationField);
+/*
 		graphicsGroup = new ChoiceGroup(literal[14], ChoiceGroup.MULTIPLE,
 				new String[]{literal[15], literal[16], literal[17]}, null);
 		graphicsGroup.setSelectedIndex(0, enableScaling);
 		graphicsGroup.setSelectedIndex(1, keepProportions);
 		graphicsGroup.setSelectedIndex(2, advancedGraphics);
 		settingsForm.append(graphicsGroup);
-		
-		scalingModeField = new TextField(literal[18], Integer.toString(scalingMode), 2, TextField.NUMERIC);
-		settingsForm.append(scalingModeField);
+	*/	
+		//scalingModeField = new TextField(literal[18], Integer.toString(scalingMode), 2, TextField.NUMERIC);
+		//settingsForm.append(scalingModeField);
 
 		soundGroup = new ChoiceGroup(literal[19],
 				ChoiceGroup.MULTIPLE, new String[]{literal[20], literal[21]},
@@ -613,12 +623,13 @@ public class MeBoy extends MIDlet implements CommandListener {
 			languageGroup.setSelectedIndex(i, language == languageLookup[i]);
 		settingsForm.append(languageGroup);
 		
+		/*
 		miscSettingsGroup = new ChoiceGroup(literal[23],
 				ChoiceGroup.MULTIPLE, new String[]{literal[24], literal[25]},
 				null);
 		miscSettingsGroup.setSelectedIndex(0, disableColor);
 		miscSettingsGroup.setSelectedIndex(1, showLogItem);
-		settingsForm.append(miscSettingsGroup);
+		settingsForm.append(miscSettingsGroup);*/
 		
 		loadThresholdField = new TextField(literal[26], "" + lazyLoadingThreshold * 16, 5, TextField.NUMERIC);
 		settingsForm.append(loadThresholdField);
@@ -640,13 +651,14 @@ public class MeBoy extends MIDlet implements CommandListener {
 		maxFrameSkip = Math.max(Math.min(f, 59), 0);
 		//rotations = Integer.parseInt(rotationField.getString()) & 3;
 		lazyLoadingThreshold = Math.max(Integer.parseInt(loadThresholdField.getString()) / 16, 20);
-		enableScaling = graphicsGroup.isSelected(0);
+		//enableScaling = graphicsGroup.isSelected(0);
+		/*
 		keepProportions = graphicsGroup.isSelected(1);
 		advancedGraphics = graphicsGroup.isSelected(2);
 		f = Integer.parseInt(scalingModeField.getString());
-		scalingMode = Math.max(Math.min(f, 3), 0);
+		scalingMode = Math.max(Math.min(f, 3), 0);*/
 		//disableColor = miscSettingsGroup.isSelected(0);
-		showLogItem = miscSettingsGroup.isSelected(1);
+		//showLogItem = miscSettingsGroup.isSelected(1);
 		enableSound = soundGroup.isSelected(0);
 		advancedSound = soundGroup.isSelected(1);
 
