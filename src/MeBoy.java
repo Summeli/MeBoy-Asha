@@ -51,7 +51,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public final static boolean fullScreen = true;
 	public static final boolean disableColor = false;
 	public static boolean enableSound = false;
-	public static boolean advancedSound = false;
+	public final static boolean advancedSound = false;
 	public final static boolean advancedGraphics = false;
 	public final static boolean showFps = false;
 	public static boolean showLogItem = false;
@@ -84,15 +84,16 @@ public class MeBoy extends MIDlet implements CommandListener {
 	// Settings
 	private Form settingsForm;
 	private TextField frameSkipField;
-	//private TextField rotationField;
 	private TextField loadThresholdField;
-	//private TextField scalingModeField;
-	//private ChoiceGroup graphicsGroup;
-	//private ChoiceGroup miscSettingsGroup;
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
 	
-	//FileSelector
+	//preparations for premium version
+	private final static boolean isPremium = false;
+	private final static String version = "MeBoy 1.0";
+	private String versionInfo;
+	
+
 	private FileSelector fileSelector;
 	
 	public void startApp() {
@@ -115,6 +116,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 		/*if (!upgradeSavegames())
 			return;
 */
+		if(isPremium){
+			versionInfo = new String("Gold");
+		}else{
+			versionInfo = new String("Light");
+		}
 		fileSelector = new FileSelector(this);
 		showMainMenu();
 	}
@@ -427,7 +433,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 
 	private void showMainMenu() {
-		mainMenu = new List("MeBoy 1.0", List.IMPLICIT);
+		mainMenu = new List(version + versionInfo, List.IMPLICIT);
 		//if game is paused, first item should be resume
 		if(gbCanvas != null && gbCanvas.isPaused()){
 			mainMenu.append(literal[1], null);
@@ -463,7 +469,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 		}  else if (item == literal[4]) {
 			showMessage("Error:","Not Implemented");
 		}else if (item == literal[5]) {
-			showMessage(literal[5], "MeBoy 1.0.0 for S40 and Nokia Aha \n" +
+			showMessage(version, version +" "+ versionInfo+ " for S40 and Nokia Aha \n" +
 					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
 					                 "MeBoy is licenced under GPLv2 licence \n" +
 					                 "You can get the source code from: http://github.com/Summeli/Meboy \n\n"+
@@ -479,7 +485,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 			String enterMenu = "To enter back to the menu from the game screen press the small triangle on the center of the bottom screen\n\n";
 			//if Asha
 			//enterMenu ="To enter back to the manu from the gamescreen press back button\n\n";
-			showMessage(literal[5], "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
+			showMessage("Instructions", "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
 					"Then open this app, and press load new game, and load the new ROM. \n\n +" + enterMenu +
 					"+Enojoy playing!;-)");
 		}else {
@@ -615,10 +621,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		//settingsForm.append(scalingModeField);
 
 		soundGroup = new ChoiceGroup(literal[19],
-				ChoiceGroup.MULTIPLE, new String[]{literal[20], literal[21]},
+				ChoiceGroup.MULTIPLE, new String[]{literal[20]},
 				null);
 		soundGroup.setSelectedIndex(0, enableSound);
-		soundGroup.setSelectedIndex(1, advancedSound);
 		settingsForm.append(soundGroup);
 
 		languageGroup = new ChoiceGroup(literal[22], ChoiceGroup.EXCLUSIVE,
@@ -664,7 +669,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 		//disableColor = miscSettingsGroup.isSelected(0);
 		//showLogItem = miscSettingsGroup.isSelected(1);
 		enableSound = soundGroup.isSelected(0);
-		advancedSound = soundGroup.isSelected(1);
 
 		int oldLanguage = language;
 		language = languageLookup[languageGroup.getSelectedIndex()];

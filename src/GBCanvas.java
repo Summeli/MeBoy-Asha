@@ -582,7 +582,6 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 					//MeBoy.disableColor = (b[index] & 8) != 0;
 					MeBoy.language = (b[index] & 16) != 0 ? 1 : 0;
 					MeBoy.enableSound = (b[index] & 32) != 0;
-					MeBoy.advancedSound = (b[index] & 64) != 0;
 					//MeBoy.advancedGraphics = (b[index] & 128) != 0;
 					index++;
 				}
