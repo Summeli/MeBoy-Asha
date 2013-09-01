@@ -54,7 +54,6 @@ class FileSelector
     private final static Image ROOT_IMAGE = MeBoy.makeImage("/root.png");
     private final static Image FOLDER_IMAGE = MeBoy.makeImage("/folder.png");
     private final static Image FILE_IMAGE = MeBoy.makeImage("/file.png");
-    private final static Image logo = MeBoy.makeImage("/logo.png");
     private final Command openCommand =
             new Command("Open", Command.ITEM, 1);
     private final Command exitCommand =
@@ -222,21 +221,6 @@ class FileSelector
         }
     }
 
-    boolean getConfirmation(String message) {
-        Object lock = new Object();
-        Confirm prompt = new Confirm(message, lock, this);
-        synchronized (lock) {
-            try {
-                lock.wait();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
-        // set current displayable, when notification arrives
-        Display.getDisplay(midlet).setCurrent(this);
-        return prompt.getResponse();
-    }
-
     private class FileSelectorOperations implements Operation {
 
         private final String parameter;
@@ -265,36 +249,5 @@ class FileSelector
         }
     }
 
-    private class Confirm extends Alert implements CommandListener {
-
-        private Command okCommand = new Command("Yes", Command.OK, 0);
-        private Command nokCommand = new Command("No", Command.EXIT, 0);
-        private boolean isOkResponse;
-        private Object waitLock;
-
-        Confirm(String message, Object lock, Displayable next) {
-            super("Image Viewer", message, logo, AlertType.CONFIRMATION);
-            addCommand(okCommand);
-            addCommand(nokCommand);
-            setCommandListener(this);
-            waitLock = lock;
-            Display.getDisplay(midlet).setCurrent(this, next);
-        }
-
-        public void commandAction(Command command, Displayable display) {
-            if (command == okCommand) {
-                isOkResponse = true;
-            } else if (command == nokCommand) {
-                isOkResponse = false;
-            }
-            synchronized (waitLock) {
-                waitLock.notifyAll();
-            }
-        }
-
-        boolean getResponse() {
-            return isOkResponse;
-        }
-    }
 }
 
