@@ -32,6 +32,7 @@ import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
 
+
 import com.nokia.mid.ui.orientation.Orientation;
 
 
@@ -75,6 +76,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	
 	// UI components
 	public static Display display;
+	
 	private List mainMenu;
 	private Form messageForm;
 	private GBCanvas gbCanvas;
@@ -89,12 +91,12 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private ChoiceGroup languageGroup;
 	
 	//preparations for premium version
-	private final static boolean isPremium = false;
+	private final static boolean isPremium = true;
 	private final static String version = "MeBoy 1.0";
 	private String versionInfo;
 	
-
 	private FileSelector fileSelector;
+	private AdScreen adscreen;
 	
 	public void startApp() {
 		if (instance == this) {
@@ -117,13 +119,23 @@ public class MeBoy extends MIDlet implements CommandListener {
 			return;
 */
 		if(isPremium){
-			versionInfo = new String("Gold");
+			versionInfo = new String("Premium");
 		}else{
-			versionInfo = new String("Light");
+			versionInfo = new String("Lite");
 		}
+
 		fileSelector = new FileSelector(this);
-		showMainMenu();
+		if( isPremium == false ){
+			adscreen = new AdScreen(this);
+			display.setCurrent(adscreen);
+			adscreen.showAdd();
+		}else{
+			showMainMenu();
+		}
+		
 	}
+
+
 
 	private boolean readLiteralsFile() {
 		try {
@@ -433,7 +445,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 
 	private void showMainMenu() {
-		mainMenu = new List(version + versionInfo, List.IMPLICIT);
+		mainMenu = new List(version + " "+versionInfo, List.IMPLICIT);
 		//if game is paused, first item should be resume
 		if(gbCanvas != null && gbCanvas.isPaused()){
 			mainMenu.append(literal[1], null);
@@ -847,5 +859,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public void resumeGame(){
 		display.setCurrent(gbCanvas);
 		gbCanvas.resumeGame();
+	}
+
+
+	//interface for the AdScreen
+	public void adExit() {
+		showMainMenu();
 	}
 }
