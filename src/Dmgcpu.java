@@ -294,7 +294,7 @@ public class Dmgcpu implements Runnable {
 
 		ioHandlerReset();
 		
-		if (MeBoy.enableSound)
+		//if (MeBoy.enableSound)
 			initSound();
 	}
 	
@@ -697,6 +697,8 @@ public class Dmgcpu implements Runnable {
 	}
 
 	public void playSound(int channel, int volume) {
+		if(MeBoy.enableSound == false )
+			return;
 		if (player == null)
 			return;
 		
@@ -754,6 +756,8 @@ public class Dmgcpu implements Runnable {
 	}
 
 	public void updateSoundFrequency() {
+		if(MeBoy.enableSound == false)
+			return;
 		if (player == null)
 			return;
 
@@ -777,6 +781,8 @@ public class Dmgcpu implements Runnable {
 	}
 	
 	public void updateSound(int channel) {
+		if( MeBoy.enableSound == false)
+			return;
 		if (player == null)
 			return;
 		
@@ -808,6 +814,9 @@ public class Dmgcpu implements Runnable {
 	}
 	
 	public void stopSound(int channel) {
+		//TODO: is this needed also in stopSound
+		if( MeBoy.enableSound == false )
+			return;
 		if (player == null)
 			return;
 		
