@@ -91,7 +91,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private ChoiceGroup languageGroup;
 	
 	//preparations for premium version
-	private final static boolean isPremium = true;
+	private final static boolean isPremium = false;
 	private final static String version = "MeBoy 1.0";
 	private String versionInfo;
 	
@@ -127,7 +127,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 		fileSelector = new FileSelector(this);
 		if( isPremium == false ){
 			adscreen = new AdScreen(this);
-			display.setCurrent(adscreen);
 			adscreen.showAdd();
 		}else{
 			showMainMenu();

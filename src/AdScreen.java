@@ -19,7 +19,7 @@ import InneractiveSDK.IADView;
 import InneractiveSDK.IADView.IaOptionalParams;
 import InneractiveSDK.InneractiveAdEventsListener;
 
-public class AdScreen extends Form implements CommandListener, InneractiveAdEventsListener{
+public class AdScreen implements InneractiveAdEventsListener{
 	
     private final MeBoy parent;
  
@@ -29,10 +29,7 @@ public class AdScreen extends Form implements CommandListener, InneractiveAdEven
     
     
 	public AdScreen(MeBoy parent) {
-		super("MeBoy Starting");
 		this.parent = parent;
-		setCommandListener(this);
-		addCommand(new Command("Skip Add", Command.BACK, 1));
 	}
 
 	public void commandAction(Command c, Displayable arg1) {
