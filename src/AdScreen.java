@@ -32,6 +32,7 @@ public class AdScreen extends Form implements CommandListener, InneractiveAdEven
 		super("MeBoy Starting");
 		this.parent = parent;
 		setCommandListener(this);
+		addCommand(new Command("Skip Add", Command.BACK, 1));
 	}
 
 	public void commandAction(Command c, Displayable arg1) {

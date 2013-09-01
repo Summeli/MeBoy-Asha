@@ -54,9 +54,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public static boolean enableSound = false;
 	public final static boolean advancedSound = false;
 	public final static boolean advancedGraphics = false;
-	public final static boolean showFps = false;
+	public static boolean showFps = false;
 	public static boolean showLogItem = false;
-	public static int lazyLoadingThreshold = 64; // number of banks, each 0x4000 bytes = 16kB
+	public static int lazyLoadingThreshold = 256; // number of banks, each 0x4000 bytes = 16kB
 	public static int language;
 	public static int suspendCounter = 1; // next index for saved games
 	public static String[] suspendName10 = new String[0]; // v1-style suspended games
@@ -85,7 +85,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	
 	// Settings
 	private Form settingsForm;
-	private TextField frameSkipField;
+	private ChoiceGroup graphicsGroup;
 	private TextField loadThresholdField;
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
@@ -498,8 +498,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 			//if Asha
 			//enterMenu ="To enter back to the manu from the gamescreen press back button\n\n";
 			showMessage("Instructions", "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
-					"Then open this app, and press load new game, and load the new ROM. \n\n +" + enterMenu +
-					"+Enojoy playing!;-)");
+					"Then open this app, and press load new game, and load the new ROM. \n\n" + enterMenu +
+					"Enojoy playing!;-)");
 		}else {
 			showError(null, "Unknown command: " + com.getLabel(), null);
 		}
@@ -617,18 +617,16 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private void showSettings() {
 		settingsForm = new Form(literal[2]);
 
-		frameSkipField = new TextField(literal[12], "" + maxFrameSkip, 3, TextField.NUMERIC);
-		settingsForm.append(frameSkipField);
+		//frameSkipField = new TextField(literal[12], "" + maxFrameSkip, 3, TextField.NUMERIC);
+//		settingsForm.append(frameSkipField);
 	//	rotationField = new TextField(literal[13], "" + rotations, 2, TextField.NUMERIC);
 	//	settingsForm.append(rotationField);
-/*
+
 		graphicsGroup = new ChoiceGroup(literal[14], ChoiceGroup.MULTIPLE,
-				new String[]{literal[15], literal[16], literal[17]}, null);
-		graphicsGroup.setSelectedIndex(0, enableScaling);
-		graphicsGroup.setSelectedIndex(1, keepProportions);
-		graphicsGroup.setSelectedIndex(2, advancedGraphics);
+				new String[]{literal[33]}, null);
+		graphicsGroup.setSelectedIndex(0, showFps);
 		settingsForm.append(graphicsGroup);
-	*/	
+	
 		//scalingModeField = new TextField(literal[18], Integer.toString(scalingMode), 2, TextField.NUMERIC);
 		//settingsForm.append(scalingModeField);
 
@@ -668,8 +666,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 			return;
 		}
 		
-		int f = Integer.parseInt(frameSkipField.getString());
-		maxFrameSkip = Math.max(Math.min(f, 59), 0);
+	//	int f = Integer.parseInt(frameSkipField.getString());
+	//	maxFrameSkip = Math.max(Math.min(f, 59), 0);
 		//rotations = Integer.parseInt(rotationField.getString()) & 3;
 		lazyLoadingThreshold = Math.max(Integer.parseInt(loadThresholdField.getString()) / 16, 20);
 		//enableScaling = graphicsGroup.isSelected(0);
@@ -681,7 +679,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 		//disableColor = miscSettingsGroup.isSelected(0);
 		//showLogItem = miscSettingsGroup.isSelected(1);
 		enableSound = soundGroup.isSelected(0);
-
+		showFps = graphicsGroup.isSelected(0);
 		int oldLanguage = language;
 		language = languageLookup[languageGroup.getSelectedIndex()];
 		
