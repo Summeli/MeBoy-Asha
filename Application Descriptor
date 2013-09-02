@@ -3,7 +3,7 @@ MIDlet-Jar-URL: MeBoy.jar
 MIDlet-Permissions-Opt: javax.microedition.io.Connector.http,javax.microedition.io.Connector.https
 MicroEdition-Configuration: CLDC-1.0
 MIDlet-Version: 1.0.0
-MIDlet-Name: MeBoy
+MIDlet-Name: MeBoy Premium
 MIDlet-Vendor: Antti Pohjola
 MIDlet-Permissions: javax.microedition.io.Connector,javax.microedition.io.file.FileConnection, javax.microedition.io.Connector.file.read,javax.microedition.io.Connector.file.write
 Nokia-MIDlet-App-Orientation: portrait

@@ -90,9 +90,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
 	
-	//preparations for premium version
-	private final static boolean isPremium = false;
-	private final static String version = "MeBoy 1.0";
 	private String versionInfo;
 	
 	private FileSelector fileSelector;
@@ -118,14 +115,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		/*if (!upgradeSavegames())
 			return;
 */
-		if(isPremium){
-			versionInfo = new String("Premium");
-		}else{
-			versionInfo = new String("Lite");
-		}
 
 		fileSelector = new FileSelector(this);
-		if( isPremium == false ){
+		if( MeBoySettings.isPremium == false ){
 			adscreen = new AdScreen(this);
 			adscreen.showAdd();
 		}else{
@@ -444,7 +436,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 
 	private void showMainMenu() {
-		mainMenu = new List(version + " "+versionInfo, List.IMPLICIT);
+		mainMenu = new List(MeBoySettings.getVersionString(), List.IMPLICIT);
 		//if game is paused, first item should be resume
 		if(gbCanvas != null && gbCanvas.isPaused()){
 			mainMenu.append(literal[1], null);
@@ -480,7 +472,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 		}  else if (item == literal[4]) {
 			showMessage("Error:","Not Implemented");
 		}else if (item == literal[5]) {
-			showMessage(version, version +" "+ versionInfo+ " for S40 and Nokia Aha \n" +
+			showMessage(MeBoySettings.getVersionString(), MeBoySettings.getVersionString() + " for S40 and Nokia Aha \n" +
 					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
 					                 "MeBoy is licenced under GPLv2 licence \n" +
 					                 "You can get the source code from: http://github.com/Summeli/Meboy \n\n"+
