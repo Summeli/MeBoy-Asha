@@ -484,7 +484,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
 					                 "MeBoy is licenced under GPLv2 licence \n" +
 					                 "You can get the source code from: http://github.com/Summeli/Meboy \n\n"+
-					                 "Meboy was originnly developed for j2ME by: © Björn Carlin, 2005-2009.\nhttp://arktos.se/meboy/ \n\n"+
+					                 "Meboy was originally developed for j2ME by: © Björn Carlin, 2005-2009.\nhttp://arktos.se/meboy/ \n\n"+
 					                 "LEGAL: This product is not affiliated with, nor authorized, endorsed or licensed in any way by Nintendo Corporation, its affiliates or subsidiaries.");
 		} else if (item == literal[3]) {
 			log(literal[29] + " " + Runtime.getRuntime().freeMemory() + "/" + Runtime.getRuntime().totalMemory());
