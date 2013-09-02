@@ -35,6 +35,8 @@ import javax.microedition.io.*;
 import javax.microedition.io.file.*;
 import javax.microedition.lcdui.*;
 
+import com.nokia.mid.ui.*;
+
 
 import OperationsQueue;
 import Operation;
@@ -60,6 +62,7 @@ class FileSelector
             new Command("Exit", Command.EXIT, 1);
     private final static int INIT_OP = 2;
     private final static int OPEN_OP = 3;
+    private final static int SHOW_FILE_DIALOG_OP = 4;
     private Vector rootsList = new Vector();
     // Stores the current root, if null we are showing all the roots
     private FileConnection currentRoot = null;
@@ -76,11 +79,17 @@ class FileSelector
     }
 
     void initialize() {
-    	if(!initialized){
-    		queue.enqueueOperation(new FileSelectorOperations(INIT_OP));
-    		FileSystemRegistry.addFileSystemListener(FileSelector.this);
-    		initialized = true;
-    	}
+    	queue.enqueueOperation(new FileSelectorOperations(SHOW_FILE_DIALOG_OP));
+    
+		if(!initialized){
+			FileSystemRegistry.addFileSystemListener(this);
+			queue.enqueueOperation(new FileSelectorOperations(INIT_OP));
+			initialized = true;
+		}
+    }
+    
+    void showAshaFileSelectionDialog(){
+    	queue.enqueueOperation(new FileSelectorOperations(SHOW_FILE_DIALOG_OP));
     }
 
     void stop() {
@@ -192,8 +201,8 @@ class FileSelector
                     
                 }
             }
-            // list all gb files and dont show hidden files
-            Enumeration listOfFiles = currentRoot.list("*.gb", false);
+            // list all gb files, .gb files are hidden in Asha
+            Enumeration listOfFiles = currentRoot.list("*.gb",false);
             while (listOfFiles.hasMoreElements()) {
                 String currentFile = (String) listOfFiles.nextElement();
                 if (currentFile.endsWith(FILE_SEPARATOR)) {
@@ -212,6 +221,7 @@ class FileSelector
                     append(currentFile, FILE_IMAGE);
                 }
             }
+            
             //Making the top item visible.
             setSelectedIndex(0, true);
         } catch (IOException e) {
@@ -221,6 +231,20 @@ class FileSelector
         }
     }
 
+    private void showFileSelectDialog(){
+    	//only available on Asha
+    	if(MeBoySettings.isAsha == true ){
+    	    // Instantiate the FileSelect with types
+    	    FileSelectDetail[] arrSelectedFiles;
+			try {
+				arrSelectedFiles = FileSelect.launch(FileSelect.FILE_SYSTEM_ALL, FileSelect.MEDIA_TYPE_ALL, false);
+			} catch (Exception e){
+				//file select failed, do nothing
+				return;
+			}
+			midlet.loadSelectedRom(arrSelectedFiles[0].url);
+    	}
+    }
     private class FileSelectorOperations implements Operation {
 
         private final String parameter;
@@ -239,12 +263,15 @@ class FileSelector
         public void execute() {
             switch (operationCode) {
                 case INIT_OP:
-                    loadRoots();
-                    displayAllRoots();
+            		loadRoots();
+            		displayAllRoots();
                     break;
                 case OPEN_OP:
                     openSelected();
                     break;
+                case SHOW_FILE_DIALOG_OP:
+                	showFileSelectDialog();
+                	break;
             }
         }
     }

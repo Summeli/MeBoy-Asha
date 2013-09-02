@@ -275,17 +275,27 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		if (t < 0)
 			t = 0;
 		
-	    //public Rectangle(xmin, ymax, xmax, ymin)
-	    //TODO: set different rects for 40 fulltouch and ASHA 1.0 devices
-		UP_BUTTON_RECT = new Rectangle(80,80,120,40);
-		LEFT_BUTTON_RECT = new Rectangle(40,40,80,0);
-		RIGHT_BUTTON_RECT = new Rectangle(40,120,80,80);
-		DOWN_BUTTON_RECT = new Rectangle(0,80,40,40);
-		MENU_BUTTON_RECT = new Rectangle(0,220,40,180);
-		A_BUTTON_RECT = new Rectangle(0,400,50,350);
-		B_BUTTON_RECT = new Rectangle(0,330,50,280);
-		START_BUTTON_RECT = new Rectangle(200,400,240,360);
-		SELECT_BUTTON_RECT = new Rectangle(200,40,240,0);
+		if(MeBoySettings.isAsha == true){
+			UP_BUTTON_RECT = new Rectangle(80,80,120,40);
+			LEFT_BUTTON_RECT = new Rectangle(40,40,80,0);
+			RIGHT_BUTTON_RECT = new Rectangle(40,120,80,80);
+			DOWN_BUTTON_RECT = new Rectangle(0,80,40,40);
+			MENU_BUTTON_RECT = new Rectangle(200,180,240,140);
+			A_BUTTON_RECT = new Rectangle(0,320,50,270);
+			B_BUTTON_RECT = new Rectangle(0,250,50,200);
+			START_BUTTON_RECT = new Rectangle(200,320,240,280);
+			SELECT_BUTTON_RECT = new Rectangle(200,40,240,0);
+		}else{
+			UP_BUTTON_RECT = new Rectangle(80,80,120,40);
+			LEFT_BUTTON_RECT = new Rectangle(40,40,80,0);
+			RIGHT_BUTTON_RECT = new Rectangle(40,120,80,80);
+			DOWN_BUTTON_RECT = new Rectangle(0,80,40,40);
+			MENU_BUTTON_RECT = new Rectangle(0,220,40,180);
+			A_BUTTON_RECT = new Rectangle(0,400,50,350);
+			B_BUTTON_RECT = new Rectangle(0,330,50,280);
+			START_BUTTON_RECT = new Rectangle(200,400,240,360);
+			SELECT_BUTTON_RECT = new Rectangle(200,40,240,0);
+		}
 	}
 	
 	public void keyReleased(int keyCode) {
@@ -463,7 +473,11 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 		g.drawImage(BUTTONS_IMAGE, 0, h - BUTTONS_IMAGE.getHeight(), Graphics.TOP | Graphics.LEFT);
 		g.drawImage(START_BUTTON_IMAGE, w -START_BUTTON_IMAGE.getWidth(), h - START_BUTTON_IMAGE.getHeight(), Graphics.TOP | Graphics.LEFT);
 		g.drawImage(START_BUTTON_IMAGE,  w -START_BUTTON_IMAGE.getWidth(), 0, Graphics.TOP | Graphics.LEFT);
-		g.drawImage(MENU_IMAGE, 0, h/2, Graphics.TOP | Graphics.LEFT);
+		if(MeBoySettings.isAsha == true){
+			g.drawImage(MENU_IMAGE, 200, h/2 -20, Graphics.TOP | Graphics.LEFT);
+		}else{
+			g.drawImage(MENU_IMAGE, 0, h/2 -20, Graphics.TOP | Graphics.LEFT);
+		}
 	}
 	
 	public static final void setInt(byte[] b, int i, int v) {

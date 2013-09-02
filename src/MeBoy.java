@@ -33,8 +33,7 @@ import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
 
 
-import com.nokia.mid.ui.orientation.Orientation;
-
+import com.nokia.mid.ui.*;
 
 
 /**
@@ -89,8 +88,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private TextField loadThresholdField;
 	private ChoiceGroup soundGroup;
 	private ChoiceGroup languageGroup;
-	
-	private String versionInfo;
 	
 	private FileSelector fileSelector;
 	private AdScreen adscreen;
@@ -457,13 +454,15 @@ public class MeBoy extends MIDlet implements CommandListener {
 		mainMenu.setCommandListener(this);
 		display.setCurrent(mainMenu);
 	}
-
 	private void mainMenuCommand(Command com) {
 		String item = mainMenu.getString(mainMenu.getSelectedIndex());
 		if (item == literal[0]) {
-			//Start the fileSelector
-			fileSelector.initialize();
-			display.setCurrent(fileSelector);
+				if(MeBoySettings.isAsha == true){
+					fileSelector.showAshaFileSelectionDialog();
+				}else{
+					fileSelector.initialize();
+					display.setCurrent(fileSelector);
+				}
 		} else if (item == literal[1]) {
 			resumeGame();
 			//showResumeGame();
