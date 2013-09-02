@@ -20,4 +20,4 @@ Credits
 * Antti Pohjola [summeli] - S40 full touch UI, Asha UI, and the MeBoy port.
 
 [arktos]: http://arktos.se/meboy
-[summeli]: htp://summeli.fi
+[summeli]: http://summeli.fi
