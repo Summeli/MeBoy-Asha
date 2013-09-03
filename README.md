@@ -16,6 +16,7 @@ Just import the project with Nokia S40, or Asha IDE and build it;-)
 
 Credits
 -------
+* Neil Millstone - JavaBoy, the original java based GameBoy emulator behind MeBoy
 * Björn Carlin [arktos] - Creator of the original MeBoy for J2ME
 * Antti Pohjola [summeli] - S40 full touch UI, Asha UI, and the MeBoy port.
 
