@@ -243,6 +243,7 @@ class FileSelector
 				return;
 			}
 			midlet.loadSelectedRom(arrSelectedFiles[0].url);
+			
     	}
     }
     private class FileSelectorOperations implements Operation {

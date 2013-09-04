@@ -1,10 +1,9 @@
 MIDlet-1: MeBoy,/icon_asha.png,MeBoy
 MIDlet-Jar-URL: MeBoy.jar
-MIDlet-Permissions-Opt: javax.microedition.io.Connector.http,javax.microedition.io.Connector.https
+MIDlet-Permissions-Opt: javax.microedition.io.Connector.http,javax.microedition.io.Connector.https,javax.microedition.io.Connector.file.read
 MicroEdition-Configuration: CLDC-1.0
-MIDlet-Version: 1.0.0
-MIDlet-Name: MeBoy Premium
+MIDlet-Version: 1.0.1
+MIDlet-Name: MeBoy Lite
 MIDlet-Vendor: Antti Pohjola
-MIDlet-Permissions: javax.microedition.io.Connector,javax.microedition.io.file.FileConnection, javax.microedition.io.Connector.file.read,javax.microedition.io.Connector.file.write
 Nokia-MIDlet-App-Orientation: portrait
 MicroEdition-Profile: MIDP-2.1

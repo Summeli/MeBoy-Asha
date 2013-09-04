@@ -2,8 +2,8 @@
 public class MeBoySettings {
 
 	//preparations for premium version
-	public final static boolean isPremium = true;
-	public final static String version = "1.0.0";
+	public static boolean isPremium = false;
+	public static String version = "1.0.1";
 	public final static boolean isAsha = true;
 	
 	public static String getVersionString(){
@@ -13,4 +13,5 @@ public class MeBoySettings {
 			return "MeBoy Lite " + version;
 		}
 	}
+	
 }
