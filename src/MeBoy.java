@@ -450,7 +450,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		if (showLogItem) {
 			mainMenu.append(literal[3], null);
 		}
-		mainMenu.append(literal[6], null);
+		if(MeBoySettings.isAsha == false){
+			mainMenu.append(literal[6], null);
+		}
 		mainMenu.setCommandListener(this);
 		display.setCurrent(mainMenu);
 	}
