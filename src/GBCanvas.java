@@ -637,7 +637,7 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	
 	private final void saveCartRam() {
 		try {
-			RecordStore rs = RecordStore.openRecordStore("20R_" + cartID, true);
+			RecordStore rs = RecordStore.openRecordStore("20R_" + cartDisplayName, true);
 			
 			byte[][] ram = cpu.getCartRam();
 			
@@ -670,7 +670,10 @@ public class GBCanvas extends Canvas implements CommandListener, MultipointTouch
 	
 	private final void loadCartRam() {
 		try {
-			RecordStore rs = RecordStore.openRecordStore("20R_" + cartID, true);
+			RecordStore rs = RecordStore.openRecordStore("20R_" + cartDisplayName, true);
+			
+			if(rs == null)
+				return;
 			
 			if (rs.getNumRecords() > 0) {
 				byte[][] ram = cpu.getCartRam();

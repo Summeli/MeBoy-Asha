@@ -2540,6 +2540,7 @@ public class Dmgcpu implements Runnable {
 				mainRam = new byte[0x2000]; // 8 kB
 			}
 			gbcRamBank = 1;
+			//allways do lazy loading
 			
 			if (numRomBanks <= MeBoy.lazyLoadingThreshold) {
 				rom = new byte[numRomBanks * 2][0x2000]; // Recreate the ROM array with the correct size
@@ -2552,7 +2553,7 @@ public class Dmgcpu implements Runnable {
 						is.close();
 						fileConn.close();
 			            fileConn =
-			                     (FileConnection) Connector.open(cartName + (i >> 4), Connector.READ);
+			                     (FileConnection) Connector.open(cartName /* + (i >> 4)*/, Connector.READ);
 			            is = fileConn.openInputStream();
 						//is = getClass().getResourceAsStream(cartName + (i >> 4));
 					}

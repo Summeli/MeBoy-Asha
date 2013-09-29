@@ -476,7 +476,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 			showMessage(MeBoySettings.getVersionString(), MeBoySettings.getVersionString() + " for S40 and Nokia Aha \n" +
 					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
 					                 "MeBoy is licenced under GPLv2 licence \n" +
-					                 "You can get the source code from: http://github.com/Summeli/Meboy \n\n"+
+					                 "You can get the source code from: http://github.com/Summeli/Meboy-Asha \n\n"+
 					                 "Meboy was originally developed for j2ME by: Björn Carlin, 2005-2009.\nhttp://arktos.se/meboy/ \n\n"+
 					                 "LEGAL: This product is not affiliated with, not authorized, endorsed or licensed in any way by Nintendo Corporation, its affiliates or subsidiaries.");
 		} else if (item == literal[3]) {
@@ -830,9 +830,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 	}
 	
 	public void loadSelectedRom(String uri){
-		String selectedCartDisplayName = "ROM";//cartDisplayName[ix];
+		int index = uri.lastIndexOf('/');
+		String selectedCartDisplayName = uri.substring(index+1, uri.length());//cartDisplayName[ix];
+		String cartDisplayName =selectedCartDisplayName.replace(' ', '_'); //replace whitespaces
 		try {
-			gbCanvas = new GBCanvas(uri, this, selectedCartDisplayName);
+			gbCanvas = new GBCanvas(uri, this, cartDisplayName);
 			cartList = null;
 			display.setCurrent(gbCanvas);
 		} catch (Exception e) {
