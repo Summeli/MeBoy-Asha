@@ -28,6 +28,9 @@ Place - Suite 330, Boston, MA 02111-1307, USA.
 
 import java.io.*;
 import java.util.*;
+
+import javax.microedition.content.Invocation;
+import javax.microedition.content.Registry;
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
@@ -70,6 +73,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private int numCarts;
 	private boolean fatalError;
 	
+	
 	public static String logString = "";
 	private static MeBoy instance;
 	
@@ -92,6 +96,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private FileSelector fileSelector;
 	private AdScreen adscreen;
 	
+	//sharing
+	private Registry registry;
+	private String romName = null;
 	public void startApp() {
 		if (instance == this) {
 			return;
@@ -271,6 +278,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 		mainMenu.append(literal[2], null);
 		mainMenu.append("Instructions", null);
 		mainMenu.append(literal[5], null);
+		if(romName != null && MeBoySettings.isSharingSupported())
+			mainMenu.append("Share", null);
 		if (showLogItem) {
 			mainMenu.append(literal[3], null);
 		}
@@ -316,6 +325,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 			showMessage("Instructions", "This app is a GameBoy emulator. Copy your gameboy rom files (.gb and .gbc) into the phone with PC.\n" +
 					"Then open this app, and press load new game, and load the new ROM. \n\n" + enterMenu +
 					"Enjoy playing!;-)");
+		}else if (item == "Share"){
+			startShare();
 		}else {
 			showError(null, "Unknown command: " + com.getLabel(), null);
 		}
@@ -631,6 +642,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public void loadSelectedRom(String uri){
 		int index = uri.lastIndexOf('/');
 		String selectedCartDisplayName = uri.substring(index+1, uri.length());//cartDisplayName[ix];
+		romName = selectedCartDisplayName;
 		String cartDisplayName =selectedCartDisplayName.replace(' ', '_'); //replace whitespaces
 		try {
 			gbCanvas = new GBCanvas(uri, this, cartDisplayName);
@@ -656,5 +668,19 @@ public class MeBoy extends MIDlet implements CommandListener {
 	//interface for the AdScreen
 	public void adExit() {
 		showMainMenu();
+	}
+	
+	private void startShare(){
+	   	registry = Registry.getRegistry(this.getClass().getName());
+    	Invocation invocation = new Invocation(null, "text/plain", "com.nokia.share");
+    	invocation.setAction("share");
+        String[] args = new String[1]; // Only the first element is required and used
+        args[0] = new String("text="+"Playing "+ romName + "on " + MeBoySettings.getVersionString());
+    	invocation.setArgs(args);
+    	invocation.setResponseRequired(false);
+    	try {
+			registry.invoke(invocation);
+		} catch (Exception e) {
+		}
 	}
 }

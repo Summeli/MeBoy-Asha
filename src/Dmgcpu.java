@@ -2563,10 +2563,6 @@ public class Dmgcpu implements Runnable {
 			
 			int numRamBanks = getNumRAMBanks();
 			
-			MeBoy.log("Loaded '" + cartName + "'. " + numRomBanks + " banks = "
-							+ (numRomBanks * 16) + " kB, " + numRamBanks + " RAM banks.");
-			MeBoy.log("Type: " + cartType + (gbcFeatures ? " (color)" : " (bw)"));
-			
 			if (numRamBanks == 0)
 				numRamBanks = 1; // mbc2 has built-in ram, and anyway we want the memory mapped
 			cartRam = new byte[numRamBanks][0x2000];
@@ -2633,8 +2629,7 @@ public class Dmgcpu implements Runnable {
 						total -= is.read(rom[i], 0x2000 - total, total);
 					} while (total > 0);
 				}
-				// MeBoy.log("loaded bank " + bankNo + " from " + file + " -> " + loadedRomBanks);
-				
+
 				is.close();
 			} catch (Exception ex) {
 				if (MeBoy.debug)
