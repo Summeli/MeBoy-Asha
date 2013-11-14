@@ -55,7 +55,7 @@ public class MeBoy extends MIDlet implements CommandListener {
 	public final static boolean advancedGraphics = false;
 	public static boolean showFps = false;
 	public static boolean showLogItem = false;
-	public static int lazyLoadingThreshold = 256; // number of banks, each 0x4000 bytes = 16kB
+	public static int lazyLoadingThreshold = 20; // number of banks, each 0x4000 bytes = 16kB
 	public static int language;
 	public static int suspendCounter = 1; // next index for saved games
 	public static String[] suspendName10 = new String[0]; // v1-style suspended games
@@ -433,18 +433,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private void showSettings() {
 		settingsForm = new Form(literal[2]);
 
-		//frameSkipField = new TextField(literal[12], "" + maxFrameSkip, 3, TextField.NUMERIC);
-//		settingsForm.append(frameSkipField);
-	//	rotationField = new TextField(literal[13], "" + rotations, 2, TextField.NUMERIC);
-	//	settingsForm.append(rotationField);
-
 		graphicsGroup = new ChoiceGroup(literal[14], ChoiceGroup.MULTIPLE,
 				new String[]{literal[33]}, null);
 		graphicsGroup.setSelectedIndex(0, showFps);
 		settingsForm.append(graphicsGroup);
 	
-		//scalingModeField = new TextField(literal[18], Integer.toString(scalingMode), 2, TextField.NUMERIC);
-		//settingsForm.append(scalingModeField);
 
 		soundGroup = new ChoiceGroup(literal[19],
 				ChoiceGroup.MULTIPLE, new String[]{literal[20]},
@@ -457,14 +450,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 		for (int i = 0; i < languages.length; i++)
 			languageGroup.setSelectedIndex(i, language == languageLookup[i]);
 		settingsForm.append(languageGroup);
-		
-		/*
-		miscSettingsGroup = new ChoiceGroup(literal[23],
-				ChoiceGroup.MULTIPLE, new String[]{literal[24], literal[25]},
-				null);
-		miscSettingsGroup.setSelectedIndex(0, disableColor);
-		miscSettingsGroup.setSelectedIndex(1, showLogItem);
-		settingsForm.append(miscSettingsGroup);*/
 		
 		loadThresholdField = new TextField(literal[26], "" + lazyLoadingThreshold * 16, 5, TextField.NUMERIC);
 		settingsForm.append(loadThresholdField);
@@ -482,18 +467,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 			return;
 		}
 		
-	//	int f = Integer.parseInt(frameSkipField.getString());
-	//	maxFrameSkip = Math.max(Math.min(f, 59), 0);
-		//rotations = Integer.parseInt(rotationField.getString()) & 3;
 		lazyLoadingThreshold = Math.max(Integer.parseInt(loadThresholdField.getString()) / 16, 20);
-		//enableScaling = graphicsGroup.isSelected(0);
-		/*
-		keepProportions = graphicsGroup.isSelected(1);
-		advancedGraphics = graphicsGroup.isSelected(2);
-		f = Integer.parseInt(scalingModeField.getString());
-		scalingMode = Math.max(Math.min(f, 3), 0);*/
-		//disableColor = miscSettingsGroup.isSelected(0);
-		//showLogItem = miscSettingsGroup.isSelected(1);
+
 		enableSound = soundGroup.isSelected(0);
 		showFps = graphicsGroup.isSelected(0);
 		int oldLanguage = language;

@@ -2540,42 +2540,19 @@ public class Dmgcpu implements Runnable {
 				mainRam = new byte[0x2000]; // 8 kB
 			}
 			gbcRamBank = 1;
-			//allways do lazy loading
 			
-			if (numRomBanks <= MeBoy.lazyLoadingThreshold) {
-				rom = new byte[numRomBanks * 2][0x2000]; // Recreate the ROM array with the correct size
-				rom[0] = firstBank;
-				
-				// Read ROM into memory
-				for (int i = 1; i < numRomBanks * 2; i++) {
-					if ((i & 15) == 0) {
-						// open next file
-						is.close();
-						fileConn.close();
-			            fileConn =
-			                     (FileConnection) Connector.open(cartName /* + (i >> 4)*/, Connector.READ);
-			            is = fileConn.openInputStream();
-						//is = getClass().getResourceAsStream(cartName + (i >> 4));
-					}
-					
-					total = 0x2000;
-					do {
-						total -= is.read(rom[i], 0x2000 - total, total);
-					} while (total > 0);
-				}
-			} else {
-				rom = new byte[numRomBanks * 2][]; // Recreate the ROM array with the correct size
-				rom[0] = firstBank;
-				rom[1] = new byte[0x2000];
-				
-				// MeBoy.log("Partial loading active.");
-				// Read halfbank 1 (second half of bank 0) into memory
+		
+			//try to load everything into memory, damnit!
+			rom = new byte[numRomBanks * 2][0x2000];
+			rom[0] = firstBank;
+			total = 0x2000;
+			for (int i = 1; i < numRomBanks * 2; i++){
 				total = 0x2000;
 				do {
-					total -= is.read(rom[1], 0x2000 - total, total);
+					total -= is.read(rom[i], 0x2000 - total, total);
 				} while (total > 0);
-				loadedRomBanks = 1;
 			}
+
 			is.close();
 			fileConn.close();
 			
@@ -2644,7 +2621,7 @@ public class Dmgcpu implements Runnable {
 				
 				int file = bankNo >> 3;
 				int offset = (bankNo & 7) * 0x4000;
-				java.io.InputStream is = getClass().getResourceAsStream(cartName + file);
+				java.io.InputStream is = getClass().getResourceAsStream(cartName /* + file*/);
 				
 				if (is == null || is.skip(offset) != offset)
 					throw new RuntimeException("Failed skipping to " + bankNo);
