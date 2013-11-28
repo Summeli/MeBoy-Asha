@@ -295,8 +295,11 @@ public class MeBoy extends MIDlet implements CommandListener {
 				if(MeBoySettings.isAsha == true){
 					fileSelector.showAshaFileSelectionDialog();
 				}else{
-					fileSelector.initialize();
-					display.setCurrent(fileSelector);
+					if(fileSelector.initialize()){
+						display.setCurrent(fileSelector);
+					}else{
+						showNoFileAccessMessage();
+					}
 				}
 		} else if (item == literal[1]) {
 			resumeGame();
@@ -462,9 +465,6 @@ public class MeBoy extends MIDlet implements CommandListener {
 			languageGroup.setSelectedIndex(i, language == languageLookup[i]);
 		settingsForm.append(languageGroup);
 		
-		loadThresholdField = new TextField(literal[26], "" + lazyLoadingThreshold * 16, 5, TextField.NUMERIC);
-		settingsForm.append(loadThresholdField);
-
 		settingsForm.addCommand(new Command(literal[10], Command.BACK, 0));
 		settingsForm.addCommand(new Command(literal[27], Command.OK, 1));
 		settingsForm.setCommandListener(this);
@@ -682,5 +682,10 @@ public class MeBoy extends MIDlet implements CommandListener {
 			registry.invoke(invocation);
 		} catch (Exception e) {
 		}
+	}
+	
+	public void showNoFileAccessMessage(){
+		showMessage("No File Access", "Loading ROMS requires file system access.\n" +
+				"Unfortunately you did not give the file access for this app, so the ROM could not be loaded \n");
 	}
 }

@@ -78,14 +78,19 @@ class FileSelector
         setCommandListener(this);
     }
 
-    void initialize() {
+    public boolean initialize() {
     	queue.enqueueOperation(new FileSelectorOperations(SHOW_FILE_DIALOG_OP));
     
 		if(!initialized){
-			FileSystemRegistry.addFileSystemListener(this);
-			queue.enqueueOperation(new FileSelectorOperations(INIT_OP));
-			initialized = true;
+			try{
+				FileSystemRegistry.addFileSystemListener(this);
+				queue.enqueueOperation(new FileSelectorOperations(INIT_OP));
+				initialized = true;
+			} catch(Exception e){
+				initialized = false;
+			}
 		}
+		return initialized;
     }
     
     void showAshaFileSelectionDialog(){
@@ -163,7 +168,7 @@ class FileSelector
                 } catch (IOException e) {
                     midlet.showError(e);
                 } catch (SecurityException e) {
-                    midlet.showError(e);
+                	midlet.showNoFileAccessMessage();
                 }
             } else if (selectedFile.equals(UPPER_DIR)) {
                 if (rootsList.contains(currentRoot.getPath() + currentRoot.getName())) {
@@ -227,11 +232,12 @@ class FileSelector
         } catch (IOException e) {
             midlet.showError(e);
         } catch (SecurityException e) {
-            midlet.showError(e);
+        	midlet.showNoFileAccessMessage();
         }
     }
 
     private void showFileSelectDialog(){
+    	/*
     	//only available on Asha
     	if(MeBoySettings.isAsha == true ){
     	    // Instantiate the FileSelect with types
@@ -244,7 +250,7 @@ class FileSelector
 			}
 			midlet.loadSelectedRom(arrSelectedFiles[0].url);
 			
-    	}
+    	}*/
     }
     private class FileSelectorOperations implements Operation {
 

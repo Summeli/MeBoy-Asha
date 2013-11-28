@@ -2,9 +2,9 @@
 public class MeBoySettings {
 
 	//preparations for premium version
-	public static boolean isPremium = true;
-	public static String version = "1.2.0";
-	public final static boolean isAsha = true;
+	public static boolean isPremium = false;
+	public static String version = "1.2.1";
+	public final static boolean isAsha = false;
 	
 	public static String getVersionString(){
 		if(isPremium){

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mtjMetadata jad="MeBoy.jad" version="1.2.2.201310171230">
-   <device group="Nokia Asha SDK 1.0" name="Nokia_Asha_SDK_1_0"/>
+   <device group="Nokia Asha SDK 1.1" name="Nokia_Asha_SDK_1_1"/>
    <signing projectSpecific="false" signProject="false">
       <alias/>
    </signing>
    <configurations>
-      <configuration active="false" name="Nokia_SDK_2_0_Java">
+      <configuration active="true" name="Nokia_SDK_2_0_Java">
          <device group="Nokia SDK 2.0 for Java" name="Nokia_SDK_2_0_Java"/>
          <symbolSet name="Nokia_SDK_2_0_Java">
             <symbol name="screen.isColor" value="true"/>
@@ -75,7 +75,7 @@
             <symbol name="screen.height" value="400"/>
          </symbolSet>
       </configuration>
-      <configuration active="true" name="Nokia Asha SDK 1.1">
+      <configuration active="false" name="Nokia Asha SDK 1.1">
          <device group="Nokia Asha SDK 1.1" name="Nokia_Asha_SDK_1_1"/>
          <symbolSet name="Nokia_Asha_SDK_1_1">
             <symbol name="screen.isColor" value="true"/>
