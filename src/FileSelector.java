@@ -237,8 +237,9 @@ class FileSelector
     }
 
     private void showFileSelectDialog(){
-    	/*
+    	
     	//only available on Asha
+    	/*
     	if(MeBoySettings.isAsha == true ){
     	    // Instantiate the FileSelect with types
     	    FileSelectDetail[] arrSelectedFiles;

@@ -31,13 +31,14 @@ import java.util.*;
 
 import javax.microedition.content.Invocation;
 import javax.microedition.content.Registry;
+import javax.microedition.io.ConnectionNotFoundException;
+import javax.microedition.io.Connector;
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.*;
 
 
 import com.nokia.mid.ui.*;
-
 
 /**
  * The main class offers a list of games, read from the file "carts.txt". It
@@ -94,11 +95,14 @@ public class MeBoy extends MIDlet implements CommandListener {
 	private ChoiceGroup languageGroup;
 	
 	private FileSelector fileSelector;
-	private AdScreen adscreen;
 	
 	//sharing
 	private Registry registry;
 	private String romName = null;
+	
+	//statics
+	private static final String rateThisApp = "Rate This App";
+	
 	public void startApp() {
 		if (instance == this) {
 			return;
@@ -121,12 +125,8 @@ public class MeBoy extends MIDlet implements CommandListener {
 */
 
 		fileSelector = new FileSelector(this);
-		if( MeBoySettings.isPremium == false ){
-			adscreen = new AdScreen(this);
-			adscreen.showAdd();
-		}else{
-			showMainMenu();
-		}
+		
+		showMainMenu();
 		
 	}
 
@@ -283,7 +283,9 @@ public class MeBoy extends MIDlet implements CommandListener {
 		if (showLogItem) {
 			mainMenu.append(literal[3], null);
 		}
+		mainMenu.append(rateThisApp, null);
 		if(MeBoySettings.isAsha == false){
+			//exit
 			mainMenu.append(literal[6], null);
 		}
 		mainMenu.setCommandListener(this);
@@ -308,8 +310,19 @@ public class MeBoy extends MIDlet implements CommandListener {
 			showSettings();
 		}  else if (item == literal[4]) {
 			showMessage("Error:","Not Implemented");
+		}else if( item == rateThisApp ){
+			if(MeBoySettings.isAsha == false){
+				//open store in browser
+				String appurl = "http://store.ovi.com/content/389679";
+				try {
+					this.platformRequest(appurl);
+				} catch (ConnectionNotFoundException e1) {
+					//nevermind, show settings
+					showSettings();
+				}
+			}
 		}else if (item == literal[5]) {
-			showMessage(MeBoySettings.getVersionString(), MeBoySettings.getVersionString() + " for S40 and Nokia Aha \n" +
+			showMessage(MeBoySettings.getVersionString(), MeBoySettings.getVersionString() + " for S40 and Nokia Asha \n" +
 					                 "by: Antti Pohjola, summeli@summeli.fi \nhttp://www.summeli.fi\n"+
 					                 "MeBoy is licenced under GPLv2 licence \n" +
 					                 "You can get the source code from: http://github.com/Summeli/Meboy-Asha \n\n"+

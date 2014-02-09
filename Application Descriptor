@@ -2,7 +2,7 @@ MIDlet-1: MeBoy,/icon.png,MeBoy
 MIDlet-Jar-URL: MeBoy.jar
 MIDlet-Permissions-Opt: javax.microedition.io.Connector.http,javax.microedition.io.Connector.https,javax.microedition.io.Connector.file.read
 MicroEdition-Configuration: CLDC-1.0
-MIDlet-Version: 1.2.1
+MIDlet-Version: 1.3.0
 MIDlet-Name: MeBoy Lite
 MIDlet-Vendor: Antti Pohjola
 Nokia-MIDlet-App-Orientation: portrait
