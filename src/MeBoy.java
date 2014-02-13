@@ -311,15 +311,13 @@ public class MeBoy extends MIDlet implements CommandListener {
 		}  else if (item == literal[4]) {
 			showMessage("Error:","Not Implemented");
 		}else if( item == rateThisApp ){
-			if(MeBoySettings.isAsha == false){
-				//open store in browser
-				String appurl = "http://store.ovi.com/content/389679";
-				try {
-					this.platformRequest(appurl);
-				} catch (ConnectionNotFoundException e1) {
-					//nevermind, show settings
-					showSettings();
-				}
+			//open store in browser
+			String appurl = "http://store.ovi.com/content/389679/comments/add";
+			try {
+				this.platformRequest(appurl);
+			} catch (ConnectionNotFoundException e1) {
+				//nevermind, show settings
+				showSettings();
 			}
 		}else if (item == literal[5]) {
 			showMessage(MeBoySettings.getVersionString(), MeBoySettings.getVersionString() + " for S40 and Nokia Asha \n" +

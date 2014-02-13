@@ -239,7 +239,6 @@ class FileSelector
     private void showFileSelectDialog(){
     	
     	//only available on Asha
-    	/*
     	if(MeBoySettings.isAsha == true ){
     	    // Instantiate the FileSelect with types
     	    FileSelectDetail[] arrSelectedFiles;
@@ -251,7 +250,7 @@ class FileSelector
 			}
 			midlet.loadSelectedRom(arrSelectedFiles[0].url);
 			
-    	}*/
+    	}
     }
     private class FileSelectorOperations implements Operation {
 

@@ -4,7 +4,7 @@ public class MeBoySettings {
 	//preparations for premium version
 	public static boolean isPremium = false;
 	public static String version = "1.3.0";
-	public final static boolean isAsha = false;
+	public final static boolean isAsha = true;
 	
 	public static String getVersionString(){
 		if(isPremium){
